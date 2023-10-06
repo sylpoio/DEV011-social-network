@@ -1,5 +1,6 @@
 // Este es el punto de entrada de tu aplicacion
+import { renderLogin } from './view.js';
 
-import { myFunction } from './lib/index.js';
+const root = document.getElementById('root');
 
-myFunction();
+root.appendChild(renderLogin())
