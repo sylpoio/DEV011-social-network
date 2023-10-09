@@ -4,7 +4,76 @@ body {
   box-sizing: border-box;
   height: 100vh;
 }
-div {
+.login-page {
+  background-image: url(../src/images/Fondo-login.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 38px;
+  text-align: center;
+  align-items: center;
+  gap: 20px
+}
+.logo-invertido {
+  width: 20vh;
+  height: 15vh;
+}
+h1 {
+  font-family: "Jomhuria", cursive;
+  font-size: 4rem;
+  margin: 0;
+}
+.inputs {
+  border-radius: 30px;
+  border: 1px solid #032838;
+  background: #107b8c;
+  width: 90%;
+  height: 5%;
+  flex-shrink: 0;
+  color: #d9d9d9;
+  text-align: center;
+  font-size: 1.5rem;
+}
+.inputs::placeholder {
+  color: #d9d9d9;
+  padding: 5%;
+  font-size: 1rem;
+}
+#login {
+  width: 50%;
+  height: 4%;
+  flex-shrink: 0;
+  background-color: #063c48;
+  border-radius: 30px;
+  border: 1px solid #032838;
+  color: #d9d9d9;
+  text-align: center;
+  font-size: 1rem;
+}
+#account {
+  width: 100%;
+  height: 4%;
+  flex-shrink: 0;
+  background-color: #119CB1;
+  border-radius: 30px;
+  border: 1px solid #032838;
+  color: #d9d9d9;
+  text-align: center;
+  font-size: 1rem;
+}
+#google {
+  background-image: url(../src/images/ícono-google.png);
+  width: 5vh;
+  height: 5vh;
+  border-radius: 50%;
+  border: none;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.create-acount-page {
   background-image: url(../src/images/Fondo-login.png);
   background-size: cover;
   background-repeat: no-repeat;
