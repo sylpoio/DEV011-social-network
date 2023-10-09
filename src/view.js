@@ -27,7 +27,7 @@ export const renderLogin = () => {
   inputPassword.classList.add("inputs");
 
   const btnLogin = document.createElement("button");
-  btnLogin.setAttribute("id", "login");
+  btnLogin.setAttribute("id", "login-signin");
   btnLogin.textContent = "Ingresar";
 
   const btnCreateAccount = document.createElement("button");
@@ -53,16 +53,26 @@ export const renderLogin = () => {
 export const renderCreateAccount = () => {
   const containerAccount = document.createElement("div");
   containerAccount.classList.add('create-acount-page')
-  const form = `
-  <img src="./images/LogoPeque.png" alt="logo-mochileiros">
+  const signInPage = `
+  <img src="./images/LogoPeque.png" alt="logo-mochileiros" class="logo">
   <h2>Crear cuenta</h2>
-  <input type="text" placeholder="Usuario">
-  <input type="email" placeholder="Correo electrónico">
-  <input type="password" placeholder="Contraseña">
-  <input type="password" placeholder="Confirma contraseña">
-  <button id="create-account">Crear</button>
-  <button id="google-create"></button>
+  <input type="text" placeholder="Usuario" class="inputs">
+  <input type="email" placeholder="Correo electrónico" class="inputs">
+  <input type="password" placeholder="Contraseña" class="inputs">
+  <input type="password" placeholder="Confirma contraseña" class="inputs">
+  <button id="login-signin">Crear</button>
+  <button id="google"></button>
   `;
-  containerAccount.innerHTML = form
+  containerAccount.innerHTML = signInPage
   return containerAccount;
 };
+
+export const renderFeed = () => {
+  const containerFeed = document.createElement("div");
+  containerFeed.classList.add('feed')
+  const feedPage = `
+  
+  `
+  containerFeed.innerHTML = feedPage
+  return containerFeed;
+}
