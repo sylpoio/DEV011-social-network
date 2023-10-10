@@ -42,7 +42,7 @@ h1 {
   padding: 5%;
   font-size: 1rem;
 }
-#login-signin {
+#login, #signin {
   width: 50%;
   height: 4%;
   flex-shrink: 0;

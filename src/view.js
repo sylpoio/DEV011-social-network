@@ -27,7 +27,7 @@ export const renderLogin = () => {
   inputPassword.classList.add("inputs");
 
   const btnLogin = document.createElement("button");
-  btnLogin.setAttribute("id", "login-signin");
+  btnLogin.setAttribute("id", "login");
   btnLogin.textContent = "Ingresar";
 
   const btnCreateAccount = document.createElement("button");
@@ -60,9 +60,10 @@ export const renderCreateAccount = () => {
   <input type="email" placeholder="Correo electrónico" class="inputs">
   <input type="password" placeholder="Contraseña" class="inputs">
   <input type="password" placeholder="Confirma contraseña" class="inputs">
-  <button id="login-signin">Crear</button>
+  <button id="signin">Crear</button>
   <button id="google"></button>
   `;
+
   containerAccount.innerHTML = signInPage
   return containerAccount;
 };
