@@ -14,9 +14,10 @@ export const renderLogin = () => {
   labelUsername.setAttribute("for", "user");
 
   const inputUsername = document.createElement("input");
-  inputUsername.setAttribute("type", "text");
-  inputUsername.setAttribute("placeholder", "Ingresa tu nombre de usuario");
+  inputUsername.setAttribute("type", "email");
+  inputUsername.setAttribute("placeholder", "Ingresa tu correo eléctronico");
   inputUsername.classList.add("inputs");
+  inputUsername.setAttribute("id","inputUsername")
 
   const labelPassword = document.createElement("label");
   labelPassword.setAttribute("for", "password");
@@ -25,6 +26,8 @@ export const renderLogin = () => {
   inputPassword.setAttribute("type", "password");
   inputPassword.setAttribute("placeholder", "Ingresa tu contraseña");
   inputPassword.classList.add("inputs");
+  inputPassword.setAttribute("id","inputPassword")
+
 
   const btnLogin = document.createElement("button");
   btnLogin.setAttribute("id", "login");
