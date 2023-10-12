@@ -9,18 +9,7 @@ export const createAccountFunction = (email,password) => new Promise((resolve, r
 createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     const user = userCredential.user;
-    /*         await user.updateProfile({
-               displayName: username
-             }); */
-    /*         user.updateProfile({
-               displayName: displayName
-             }) */
-    /*         firebase.firestore().collection('users').doc(user.uid).set({
-               username: username
-             }) */
-    /*        await setDoc(doc(db, username), {
-                  username: username
-                }); */
+
     console.log("HOLA", userCredential);
     console.log("Usuario creado con éxito:", user);
   })
@@ -33,13 +22,12 @@ createUserWithEmailAndPassword(auth, email, password)
 
 //  //---------------------------------Google authentication-----------------------------------
 
-//  const btnGoogle = document.getElementById("google");
-//  btnGoogle.addEventListener('click', () => {
-//    const provider = new GoogleAuthProvider();
-//    console.log('Button with id "google" clicked');
-//    console.log('Provider:', provider);
-//    signInWithRedirect(auth, provider);
-// });
+ export const AccountGoogle = () => {
+   const provider = new GoogleAuthProvider();
+   console.log('Button with id "google" clicked');
+   console.log('Provider:', provider);
+   signInWithRedirect(auth, provider);
+};
 
 // //---------------------------------Login Function-----------------------------------
 export const loginFunction = (email,password) => new Promise((resolve, reject) => {

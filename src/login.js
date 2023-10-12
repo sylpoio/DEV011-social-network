@@ -1,4 +1,4 @@
-export const renderLogin = () => {
+export const renderLogin = (navigateTo) => {
     const container = document.createElement("div");
     container.classList.add("login-page")
   
