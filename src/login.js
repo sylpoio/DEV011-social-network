@@ -38,7 +38,7 @@ export const renderLogin = () => {
     btnCreateAccount.textContent = "Crear cuenta";
   
     const btnGoogle = document.createElement("button");
-    btnGoogle.setAttribute("id", "google");
+    btnGoogle.setAttribute("id", "login-google");
   
     container.appendChild(logo);
     container.appendChild(h1);

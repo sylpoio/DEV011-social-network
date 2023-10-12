@@ -9,7 +9,7 @@ export const renderCreateAccount = () => {
     <input type="password" placeholder="Contraseña" class="inputs">
     <input type="password" placeholder="Confirma contraseña" class="inputs">
     <button id="signin">Crear</button>
-    <button id="google"></button>
+    <button id="signin-google"></button>
     `;
   
     containerAccount.innerHTML = signInPage
