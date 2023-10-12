@@ -62,3 +62,27 @@ btnCreateAccount.addEventListener("click", () => {
     
   })
 });
+
+//---------------------------------Rutas-----------------------------------
+const routes = [
+  { path: "/", component: login },
+  { path: "/signin", component: create - account },
+  { path: "/feed", component: feed },
+  { path: "/error", component: error },
+];
+
+function navigateTo(hash) {
+  const route = routes.find((routeFound) => routeFound.path === hash);
+
+  if (route && route.component) {
+    window.history.pushState(
+      {},
+      route.path,
+      window.location.origin + route.path
+    );
+  }
+  if (root.firstChild) {
+    root.removeChild(root.firstChild);
+  }
+  root.appendChild(route.component());
+}
