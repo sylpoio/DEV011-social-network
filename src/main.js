@@ -1,49 +1,60 @@
 // Este es el punto de entrada de tu aplicacion
-import { renderLogin, renderCreateAccount } from './view.js';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithRedirect, getRedirectResult } from "firebase/auth";
+import { renderLogin } from "./login.js";
+import { renderCreateAccount } from "./create-account.js";
+//import { renderFeed} from './feed.js' ;
+//import { error} from './error.js' ;
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithRedirect,
+  getRedirectResult,
+} from "firebase/auth";
 /* import { doc, setDoc } from "firebase/firestore";  */
 
-
-const root = document.getElementById('root');
+const root = document.getElementById("root");
+const defaultRoute = "/";
 
 //---------------------------------Render Login-----------------------------------
-root.appendChild(renderLogin())
+root.appendChild(renderLogin());
 
 const btnCreateAccount = document.getElementById("account");
-const btnLogin = document.getElementById('login');
-const inputLoginEmail = document.getElementById('inputUsername');
-const inputLoginPassword = document.getElementById('inputPassword');
+const btnLogin = document.getElementById("login");
+const inputLoginEmail = document.getElementById("inputUsername");
+const inputLoginPassword = document.getElementById("inputPassword");
 const btnGoogle = document.getElementById("google");
 
 const auth = getAuth();
-btnGoogle.addEventListener('click', () => {
+btnGoogle.addEventListener("click", () => {
   const provider = new GoogleAuthProvider();
   signInWithRedirect(auth, provider);
-  console.log('GOOGLE LOGIN');
+  console.log("GOOGLE LOGIN");
 });
 
 getRedirectResult(auth)
-.then((result) => {
-  // This gives you a Google Access Token. You can use it to access Google APIs.
-  const credential = GoogleAuthProvider.credentialFromResult(result);
-  const token = credential.accessToken;
+  .then((result) => {
+    // This gives you a Google Access Token. You can use it to access Google APIs.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
 
-  // The signed-in user info.
-  const user = result.user;
-  // IdP data available using getAdditionalUserInfo(result)
-  // ...
-}).catch((error) => {
-  // Handle Errors here.
-  const errorCode = error.code;
-  const errorMessage = error.message;
-  // The email of the user's account used.
-  const email = error.customData.email;
-  // The AuthCredential type that was used.
-  const credential = GoogleAuthProvider.credentialFromError(error);
-  // ...
-});
+    // The signed-in user info.
+    const user = result.user;
+    // IdP data available using getAdditionalUserInfo(result)
+    // ...
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+  });
 
-btnLogin.addEventListener('click', () => {
+btnLogin.addEventListener("click", () => {
   //---------------------------------Login Function-----------------------------------
 
   const emailLogin = inputLoginEmail.value;
@@ -52,25 +63,24 @@ btnLogin.addEventListener('click', () => {
   const auth = getAuth();
   signInWithEmailAndPassword(auth, emailLogin, passwordLogin)
     .then((userCredential) => {
-
       const user = userCredential.user;
-      alert('Te logueaste')
+      alert("Te logueaste");
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      alert('no existe el correo')
+      alert("no existe el correo");
     });
-})
+});
 
-btnCreateAccount.addEventListener('click', () => {
-  root.innerHTML = ''
+btnCreateAccount.addEventListener("click", () => {
+  root.innerHTML = "";
   //---------------------------------render Create Account-----------------------------------
-  root.appendChild(renderCreateAccount())
+  root.appendChild(renderCreateAccount());
 
-  const btnCreate = document.getElementById('signin')
+  const btnCreate = document.getElementById("signin");
 
-  btnCreate.addEventListener('click', () => {
+  btnCreate.addEventListener("click", () => {
     const usernameInput = document.querySelector("input[type='text']");
     const emailInput = document.querySelector("input[type='email']");
     const passwordInput = document.querySelector("input[type='password']");
@@ -97,27 +107,47 @@ btnCreateAccount.addEventListener('click', () => {
         /*        await setDoc(doc(db, username), {
                      username: username
                    }); */
-        console.log('HOLA', userCredential);
+        console.log("HOLA", userCredential);
         console.log("Usuario creado con éxito:", user);
-
       })
       .catch((error) => {
-
         const errorCode = error.code;
         const errorMessage = error.message;
         console.error("Error al crear el usuario:", errorCode, errorMessage);
-
       });
-  })
+  });
   //---------------------------------Google authentication-----------------------------------
 
   const btnGoogle = document.getElementById("google");
-  btnGoogle.addEventListener('click', () => {
+  btnGoogle.addEventListener("click", () => {
     const provider = new GoogleAuthProvider();
     console.log('Button with id "google" clicked');
-    console.log('Provider:', provider);
+    console.log("Provider:", provider);
     const auth = getAuth();
     signInWithRedirect(auth, provider);
+  });
 });
-})
 
+//---------------------------------Rutas-----------------------------------
+const routes = [
+  { path: "/", component: login },
+  { path: "/signin", component: create - account },
+  { path: "/feed", component: feed },
+  { path: "/error", component: error },
+];
+
+function navigateTo(hash) {
+  const route = routes.find((routeFound) => routeFound.path === hash);
+
+  if (route && route.component) {
+    window.history.pushState(
+      {},
+      route.path,
+      window.location.origin + route.path
+    );
+  }
+  if (root.firstChild) {
+    root.removeChild(root.firstChild);
+  }
+  root.appendChild(route.component());
+}
