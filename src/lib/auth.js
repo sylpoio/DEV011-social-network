@@ -22,7 +22,7 @@ createUserWithEmailAndPassword(auth, email, password)
 
 //  //---------------------------------Google authentication-----------------------------------
 
- export const AccountGoogle = () => {
+ export const accountGoogle = () => {
    const provider = new GoogleAuthProvider();
    console.log('Button with id "google" clicked');
    console.log('Provider:', provider);
