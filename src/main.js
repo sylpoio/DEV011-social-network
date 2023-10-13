@@ -1,50 +1,40 @@
-import { renderLogin } from "./login.js";
-import { renderCreateAccount } from "./create-account.js";
+import { renderLogin } from "./components/login.js";
+import { renderCreateAccount } from "./components/create-account.js";
 //import { renderFeed} from './feed.js' ;
-import { error } from './error.js';
+import { error } from './components/error.js';
 
-let root = document.getElementById("root");
+const defaultRoute = '/';
+const root = document.getElementById('root');
 
-//---------------------------------Routes-----------------------------------
-const defaultRoute = "/";
 const routes = [
-  { path: "/", component: renderLogin },
-  { path: "/signin", component: renderCreateAccount },
-  //{ path: "/feed", component: feed },
-  { path: "/error", component: error },
+  { path: '/', component: renderLogin },
+  { path: '/signin', component: renderCreateAccount },
+  { path: '/error', component: error },
 ];
 
 function navigateTo(hash) {
   const route = routes.find((routeFound) => routeFound.path === hash);
-
+  
   if (route && route.component) {
     window.history.pushState(
       {},
       route.path,
-      window.location.origin + route.path
+      window.location.origin + route.path,
     );
 
     if (root.firstChild) {
       root.removeChild(root.firstChild);
     }
-
-    root.appendChild(route.component());
-  } else {
-    navigateTo("/error");
+    root.appendChild(route.component(navigateTo));
+   } else {
+    navigateTo('/error');
   }
 }
 
-//---------------------------------Render Login-----------------------------------
-function initRouter() {
-  navigateTo(window.location.pathname || defaultRoute);
-}
-initRouter();
+window.onpopstate = () => {
+  navigateTo(window.location.pathname);
+};
 
-//---------------------------------Render Create Account--------------------------
-const btnCreateAccount = document.getElementById("account");
-
-btnCreateAccount.addEventListener("click", () => {
-  navigateTo("/signin");
-});
+navigateTo(window.location.pathname || defaultRoute);
 
 

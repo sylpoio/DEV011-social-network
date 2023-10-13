@@ -1,4 +1,4 @@
-import { loginFunction, accountGoogle } from './lib/auth'
+import { loginFunction, accountGoogle } from '../lib/auth'
 
 export const renderLogin = (navigateTo) => {
   const container = document.createElement("div");
@@ -28,8 +28,10 @@ export const renderLogin = (navigateTo) => {
   inputPassword.setAttribute("type", "password");
   inputPassword.setAttribute("placeholder", "Ingresa tu contraseña");
   inputPassword.classList.add("inputs");
-  inputPassword.setAttribute("id", "inputPassword")
+  inputPassword.setAttribute("id", "inputPassword");
 
+  const span = document.createElement("span");
+  span.classList.add('span-login');
 
   const btnLogin = document.createElement("button");
   btnLogin.setAttribute("id", "login");
@@ -48,6 +50,7 @@ export const renderLogin = (navigateTo) => {
   container.appendChild(labelPassword);
   container.appendChild(inputUsername);
   container.appendChild(inputPassword);
+  container.appendChild(span);
   container.appendChild(btnLogin);
   container.appendChild(btnCreateAccount);
   container.appendChild(btnGoogle);
@@ -57,6 +60,13 @@ export const renderLogin = (navigateTo) => {
   const btnLoginGoogle = container.querySelector("#login-google");
   const inputLoginEmail = container.querySelector("#inputUsername");
   const inputLoginPassword = container.querySelector("#inputPassword");
+
+  const buttnCreateAccount = container.querySelector("#account");
+
+  buttnCreateAccount.addEventListener("click", () => {
+
+    navigateTo("/signin");
+  });
 
   //---------------------------------Login functions---------------------------------
   // Login email and password

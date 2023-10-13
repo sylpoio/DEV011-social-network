@@ -9,14 +9,22 @@ export const createAccountFunction = (email,password) => new Promise((resolve, r
 createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     const user = userCredential.user;
-
-    console.log("HOLA", userCredential);
     console.log("Usuario creado con éxito:", user);
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
     console.error("Error al crear el usuario:", errorCode, errorMessage);
+    
+    const errorSpan = document.querySelector(".error-create-account");
+    if(errorCode === 'auth/invalid-email') {
+      errorSpan.innerHTML = 'Correo invalido';
+    } else if(errorCode === 'auth/weak-password') {
+      errorSpan.innerHTML = 'La contraseña requiere mínimo 6 caracteres';      
+    } else if(errorCode === 'auth/email-already-in-use') {
+      errorSpan.innerHTML = 'El correo ingresado ya esta registrado';      
+    }
+
   });
 })
 
@@ -39,6 +47,16 @@ signInWithEmailAndPassword(auth, email, password)
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
+    console.error("Error al ingresar el usuario:", errorCode, errorMessage);
+    
+    const errorSpan = document.querySelector(".span-login");
+    if(errorCode === 'auth/invalid-email') {
+      errorSpan.innerHTML = 'Correo invalido';
+    } else if(errorCode === 'auth/invalid-login-credentials') {
+      errorSpan.innerHTML = 'Datos incorrectos, revisa tu correo y contraseña';
+    } else if(errorCode === 'auth/user-disabled') {
+      errorSpan.innerHTML ='Tu cuenta se encuentra deshabilitada';
+    }
   });
 })
 
