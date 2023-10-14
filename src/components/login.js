@@ -1,4 +1,6 @@
-export const renderLogin = () => {
+import { loginFunction, accountGoogle } from '../lib/auth'
+
+export const renderLogin = (navigateTo) => {
   const container = document.createElement("div");
   container.classList.add("login-page")
 
@@ -14,9 +16,10 @@ export const renderLogin = () => {
   labelUsername.setAttribute("for", "user");
 
   const inputUsername = document.createElement("input");
-  inputUsername.setAttribute("type", "text");
-  inputUsername.setAttribute("placeholder", "Ingresa tu nombre de usuario");
+  inputUsername.setAttribute("type", "email");
+  inputUsername.setAttribute("placeholder", "Ingresa tu correo eléctronico");
   inputUsername.classList.add("inputs");
+  inputUsername.setAttribute("id", "inputUsername")
 
   const labelPassword = document.createElement("label");
   labelPassword.setAttribute("for", "password");
@@ -25,9 +28,13 @@ export const renderLogin = () => {
   inputPassword.setAttribute("type", "password");
   inputPassword.setAttribute("placeholder", "Ingresa tu contraseña");
   inputPassword.classList.add("inputs");
+  inputPassword.setAttribute("id", "inputPassword");
+
+  const span = document.createElement("span");
+  span.classList.add('span-login');
 
   const btnLogin = document.createElement("button");
-  btnLogin.setAttribute("id", "login-signin");
+  btnLogin.setAttribute("id", "login");
   btnLogin.textContent = "Ingresar";
 
   const btnCreateAccount = document.createElement("button");
@@ -35,7 +42,7 @@ export const renderLogin = () => {
   btnCreateAccount.textContent = "Crear cuenta";
 
   const btnGoogle = document.createElement("button");
-  btnGoogle.setAttribute("id", "google");
+  btnGoogle.setAttribute("id", "login-google");
 
   container.appendChild(logo);
   container.appendChild(h1);
@@ -43,36 +50,37 @@ export const renderLogin = () => {
   container.appendChild(labelPassword);
   container.appendChild(inputUsername);
   container.appendChild(inputPassword);
+  container.appendChild(span);
   container.appendChild(btnLogin);
   container.appendChild(btnCreateAccount);
   container.appendChild(btnGoogle);
 
+  //---------------------------------addEventListeners-----------------------------------
+  const buttonLogin = container.querySelector("#login");
+  const btnLoginGoogle = container.querySelector("#login-google");
+  const inputLoginEmail = container.querySelector("#inputUsername");
+  const inputLoginPassword = container.querySelector("#inputPassword");
+
+  const buttnCreateAccount = container.querySelector("#account");
+
+  buttnCreateAccount.addEventListener("click", () => {
+
+    navigateTo("/signin");
+  });
+
+  //---------------------------------Login functions---------------------------------
+  // Login email and password
+  buttonLogin.addEventListener("click", () => {
+    const email = inputLoginEmail.value;
+    const password = inputLoginPassword.value;
+    loginFunction(email, password);
+  });
+
+  //Login with Google
+  btnLoginGoogle.addEventListener("click", () => {
+    accountGoogle();
+    alert("Te logueaste");
+  });
+
   return container;
 };
-
-export const renderCreateAccount = () => {
-  const containerAccount = document.createElement("div");
-  containerAccount.classList.add('create-acount-page')
-  const signInPage = `
-  <img src="./images/LogoPeque.png" alt="logo-mochileiros" class="logo">
-  <h2>Crear cuenta</h2>
-  <input type="text" placeholder="Usuario" class="inputs">
-  <input type="email" placeholder="Correo electrónico" class="inputs">
-  <input type="password" placeholder="Contraseña" class="inputs">
-  <input type="password" placeholder="Confirma contraseña" class="inputs">
-  <button id="login-signin">Crear</button>
-  <button id="google"></button>
-  `;
-  containerAccount.innerHTML = signInPage
-  return containerAccount;
-};
-
-export const renderFeed = () => {
-  const containerFeed = document.createElement("div");
-  containerFeed.classList.add('feed')
-  const feedPage = `
-  
-  `
-  containerFeed.innerHTML = feedPage
-  return containerFeed;
-}
