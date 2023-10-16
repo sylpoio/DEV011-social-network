@@ -1,6 +1,6 @@
 import { renderLogin } from './components/login.js';
 import { renderCreateAccount } from './components/create-account.js';
-// import { renderFeed} from './feed.js' ;
+import { renderFeed} from './components/feed.js' ;
 import { error } from './components/error.js';
 
 const defaultRoute = '/';
@@ -9,6 +9,7 @@ const root = document.getElementById('root');
 const routes = [
   { path: '/', component: renderLogin },
   { path: '/signin', component: renderCreateAccount },
+  { path: '/feed', component: renderFeed },
   { path: '/error', component: error },
 ];
 

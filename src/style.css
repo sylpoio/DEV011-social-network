@@ -101,3 +101,10 @@ h2 {
   font-weight: 400;
   line-height: normal;
 }
+
+.error-message, .span-login {
+  color: white;
+  background-color: darkred;
+  padding: .5%;
+  border-radius: 5px;
+}
