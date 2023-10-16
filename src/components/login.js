@@ -60,8 +60,8 @@ export const renderLogin = (navigateTo) => {
   const btnLoginGoogle = container.querySelector("#login-google");
   const inputLoginEmail = container.querySelector("#inputUsername");
   const inputLoginPassword = container.querySelector("#inputPassword");
-
   const buttnCreateAccount = container.querySelector("#account");
+  const errorSpan = container.querySelector(".span-login");
 
   buttnCreateAccount.addEventListener("click", () => {
 
@@ -73,7 +73,21 @@ export const renderLogin = (navigateTo) => {
   buttonLogin.addEventListener("click", () => {
     const email = inputLoginEmail.value;
     const password = inputLoginPassword.value;
-    loginFunction(email, password);
+    loginFunction(email, password)
+    .then (()=>{
+      alert('Te logueaste')
+    })
+
+    .catch ((errorCode) =>{
+        if(errorCode === 'auth/invalid-email') {
+        errorSpan.innerHTML = 'Correo invalido';
+      } else if(errorCode === 'auth/invalid-login-credentials') {
+        errorSpan.innerHTML = 'Datos incorrectos, revisa tu correo y contraseña';
+      } else if(errorCode === 'auth/user-disabled') {
+        errorSpan.innerHTML ='Tu cuenta se encuentra deshabilitada';
+      }
+    })
+  
   });
 
   //Login with Google
