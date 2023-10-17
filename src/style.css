@@ -108,3 +108,59 @@ h2 {
   padding: .5%;
   border-radius: 5px;
 }
+
+.feed {
+  background-image: url(../images/fondo-muro.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 15px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  height: 8vh;
+  justify-content: space-between;
+  text-align: right;
+}
+
+.little-logo {
+  width: 10vh;
+  height: 8vh;
+}
+
+h3 {
+  font-family: "Jomhuria", cursive;
+  font-size: 3rem;
+  margin: 0;
+  text-align: center;
+  text-shadow: 0px 4px 4px rgb(238, 242, 242);
+
+}
+
+h4 {
+  margin: 0;
+  flex-shrink: 0;
+  background-color: #063c48;
+  border-radius: 30px;
+  border: 1px solid #032838;
+  color: #d9d9d9;
+  text-align: center;
+  font-size: 1rem;
+  padding: 5px;
+}
+
+#signout {
+  border-radius: 30px;
+  border: 1px solid #119CB1;
+  background: #86A8AF;
+  width: 70%;
+  height: 5%;
+  color: #FFF;
+  text-align: center;
+}
+
