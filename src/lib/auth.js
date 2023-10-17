@@ -1,64 +1,52 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithRedirect, getRedirectResult } from "firebase/auth";
-/* import { doc, setDoc } from "firebase/firestore";  */
+import {
+  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+  GoogleAuthProvider, signInWithRedirect,
+} from 'firebase/auth';
+/* import { doc, setDoc } from 'firebase/firestore';  */
 
 const auth = getAuth();
 
-//---------------------------------Create Account Function-----------------------------------
+// ---------------------------------Create Account Function-----------------------------------
 
-export const createAccountFunction = (email,password) => new Promise((resolve, reject) => {
-createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    const user = userCredential.user;
-    console.log("Usuario creado con éxito:", user);
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.error("Error al crear el usuario:", errorCode, errorMessage);
-    
-    const errorSpan = document.querySelector(".error-create-account");
-    if(errorCode === 'auth/invalid-email') {
-      errorSpan.innerHTML = 'Correo invalido';
-    } else if(errorCode === 'auth/weak-password') {
-      errorSpan.innerHTML = 'La contraseña requiere mínimo 6 caracteres';      
-    } else if(errorCode === 'auth/email-already-in-use') {
-      errorSpan.innerHTML = 'El correo ingresado ya esta registrado';      
-    }
+export const createAccountFunction = (email, password) => new Promise((resolve, reject) => {
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      resolve();
+      console.log('Usuario creado con éxito:', user);
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      reject(errorCode);
+      console.error('Error al crear el usuario:', errorCode, errorMessage);
+    });
+});
 
-  });
-})
+// ---------------------------------Google authentication-----------------------------------
 
-//  //---------------------------------Google authentication-----------------------------------
-
- export const accountGoogle = () => {
-   const provider = new GoogleAuthProvider();
-   console.log('Button with id "google" clicked');
-   console.log('Provider:', provider);
-   signInWithRedirect(auth, provider);
+export const accountGoogle = () => {
+  const provider = new GoogleAuthProvider();
+  console.log('Button with id "google" clicked');
+  console.log('Provider:', provider);
+  signInWithRedirect(auth, provider);
 };
 
 // //---------------------------------Login Function-----------------------------------
-export const loginFunction = (email,password) => new Promise((resolve, reject) => {
-signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    const user = userCredential.user;
-    alert('Te logueaste')
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.error("Error al ingresar el usuario:", errorCode, errorMessage);
-    
-    const errorSpan = document.querySelector(".span-login");
-    if(errorCode === 'auth/invalid-email') {
-      errorSpan.innerHTML = 'Correo invalido';
-    } else if(errorCode === 'auth/invalid-login-credentials') {
-      errorSpan.innerHTML = 'Datos incorrectos, revisa tu correo y contraseña';
-    } else if(errorCode === 'auth/user-disabled') {
-      errorSpan.innerHTML ='Tu cuenta se encuentra deshabilitada';
-    }
-  });
-})
+export const loginFunction = (email, password) => new Promise((resolve, reject) => {
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      console.log(user);
+      resolve();
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      reject(errorCode);
+      console.error('Error al ingresar el usuario:', errorCode, errorMessage);
+    });
+});
 
 //   //---------------------------------Redirect Feed Function-----------------------------------
 //   getRedirectResult(auth)

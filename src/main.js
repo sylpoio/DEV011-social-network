@@ -1,6 +1,6 @@
-import { renderLogin } from "./components/login.js";
-import { renderCreateAccount } from "./components/create-account.js";
-//import { renderFeed} from './feed.js' ;
+import { renderLogin } from './components/login.js';
+import { renderCreateAccount } from './components/create-account.js';
+// import { renderFeed} from './feed.js' ;
 import { error } from './components/error.js';
 
 const defaultRoute = '/';
@@ -14,7 +14,6 @@ const routes = [
 
 function navigateTo(hash) {
   const route = routes.find((routeFound) => routeFound.path === hash);
-  
   if (route && route.component) {
     window.history.pushState(
       {},
@@ -26,7 +25,7 @@ function navigateTo(hash) {
       root.removeChild(root.firstChild);
     }
     root.appendChild(route.component(navigateTo));
-   } else {
+  } else {
     navigateTo('/error');
   }
 }
@@ -36,5 +35,3 @@ window.onpopstate = () => {
 };
 
 navigateTo(window.location.pathname || defaultRoute);
-
-
