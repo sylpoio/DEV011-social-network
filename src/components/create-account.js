@@ -25,7 +25,6 @@ export const renderCreateAccount = (navigateTo) => {
   const emailInput = containerAccount.querySelector("input[type='email']");
   const passwordInput = containerAccount.querySelector("input[type='password']");
   const confirmPasswordInput = containerAccount.querySelector("input[placeholder='Confirma contraseña']");
-  const successMessage = containerAccount.querySelector('.success-message');
   const errorMessage = containerAccount.querySelector('.error-message');
 
   // ---------------------------------Create account functions-----------------------------------
@@ -35,12 +34,11 @@ export const renderCreateAccount = (navigateTo) => {
     const password = passwordInput.value;
     if (password !== confirmPasswordInput.value) {
       errorMessage.style.display = 'block';
-      errorMessage.innerHTML = 'Tu contraseña no coincide';      
+      errorMessage.innerHTML = 'Tu contraseña no coincide';
     } else {
       createAccountFunction(email, password)
         .then(() => {
           navigateTo('/feed');
-      
         })
         .catch((errorCode) => {
           errorMessage.style.display = 'block';
@@ -51,7 +49,7 @@ export const renderCreateAccount = (navigateTo) => {
           } else if (errorCode === 'auth/email-already-in-use') {
             errorMessage.innerHTML = 'El correo ingresado ya esta registrado';
           } else if (errorCode === 'auth/missing-password') {
-            errorMessage.innerHTML = 'Olvidaste escribir una contraseña'
+            errorMessage.innerHTML = 'Olvidaste escribir una contraseña';
           }
         });
     }

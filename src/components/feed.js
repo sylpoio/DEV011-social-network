@@ -1,6 +1,6 @@
-export const renderFeed = (navigateTo) => {
-  const containerFeed = document.createElement("div");
-  containerFeed.classList.add("feed");
+export const renderFeed = () => {
+  const containerFeed = document.createElement('div');
+  containerFeed.classList.add('feed');
   const feedPage = `
   <header>
     <img src="./images/LogoPeque.png" alt="logo-mochileiros" class="little-logo" />

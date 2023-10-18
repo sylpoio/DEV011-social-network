@@ -76,9 +76,7 @@ export const renderLogin = (navigateTo) => {
     loginFunction(email, password)
       .then(() => {
         navigateTo('/feed');
-      
       })
-
       .catch((errorCode) => {
         errorSpan.style.display = 'block';
         if (errorCode === 'auth/invalid-email') {
