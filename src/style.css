@@ -21,10 +21,12 @@ body {
   width: 20vh;
   height: 15vh;
 }
+
 h1 {
   font-family: "Jomhuria", cursive;
   font-size: 4rem;
   margin: 0;
+  text-shadow: 0px 4px 4px #107b8c;
 }
 .inputs {
   border-radius: 30px;
@@ -64,6 +66,21 @@ h1 {
   text-align: center;
   font-size: 1rem;
 }
+
+.signin-google {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+label[for='signin-google'] {
+color: #107b8c;
+background-color: #d9d9d9;
+padding: 0 5px;
+border-radius: 10px;
+}
+
 #signin-google, #login-google {
   background-image: url(../src/images/ícono-google.png);
   width: 5vh;

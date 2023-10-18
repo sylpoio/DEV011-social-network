@@ -42,9 +42,17 @@ export const renderLogin = (navigateTo) => {
   btnCreateAccount.setAttribute('id', 'account');
   btnCreateAccount.textContent = 'Crear cuenta';
 
+  const divGoogle=document.createElement ('div');
+  divGoogle.setAttribute ('class', 'signin-google');
+
+  const googleLabel=document.createElement ('label');
+  googleLabel.setAttribute ('for', 'signin-google');
+  googleLabel.textContent = 'Continuar con:';
+
   const btnGoogle = document.createElement('button');
   btnGoogle.setAttribute('id', 'login-google');
 
+  divGoogle.append(googleLabel,btnGoogle);
   container.appendChild(logo);
   container.appendChild(h1);
   container.appendChild(labelUsername);
@@ -54,7 +62,7 @@ export const renderLogin = (navigateTo) => {
   container.appendChild(span);
   container.appendChild(btnLogin);
   container.appendChild(btnCreateAccount);
-  container.appendChild(btnGoogle);
+  container.appendChild(divGoogle);
 
   // ---------------------------------addEventListeners-----------------------------------
   const buttonLogin = container.querySelector('#login');
