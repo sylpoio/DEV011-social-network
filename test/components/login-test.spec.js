@@ -18,11 +18,26 @@ describe('renderLogin', () => {
     const haveCreateButton = DOM.querySelector('#login');
     expect(haveCreateButton).not.toBe(undefined);
   });
-  it('cuando se hace click en el botón llama a la función navigateTo', () => {
+  it('cuando se hace click en el botón crear cuenta nos lleva a la url de signin', () => {
     const DOM = document.createElement('div');
-    DOM.append(renderLogin());
+    const navigateToMock = jest.fn();
+    DOM.append(renderLogin(navigateToMock));
     const createAccountButton = DOM.querySelector('#account');
     createAccountButton.click();
+    expect(navigateToMock).toHaveBeenLastCalledWith('/signin');
+  });
+  it('cuando se hace click en el botón crear cuenta nos lleva a la url de feed', () => {
+    const DOM = document.createElement('div');
+    const navigateToMock = jest.fn();
+    const email = 'mochilerxs@gmail.com';
+    const password = '123456';
+    const loginFunctionMock = jest.fn((email, password) => Promise.resolve())
+    
+    DOM.append(renderLogin(loginFunctionMock));
+    DOM.append(loginFunctionMock(navigateToMock));
+    const loginButton = DOM.querySelector('#login');
+    loginButton.click();
+    expect(navigateToMock).toHaveBeenLastCalledWith('/feed');
   });
 });
 

@@ -92,7 +92,7 @@ export const renderLogin = (navigateTo) => {
   // Login with Google
   btnLoginGoogle.addEventListener('click', () => {
     accountGoogle();
-    alert('Te logueaste');
+    navigateTo('/feed');
   });
 
   return container;
