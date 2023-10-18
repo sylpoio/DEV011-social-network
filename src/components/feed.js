@@ -13,8 +13,10 @@ export const renderFeed = () => {
   <section class="posts">
     <section class="square">
       <div class = "post"> 
+      <div class = "header-post"> 
         <h5>Usuarix</h5>
         <button id="edit">🖋</button>
+      </div> 
         <p>Miren esta cascada bella</p>
         <div class = "image">
         <img src="./images/imagen-muestra-post.png" alt="foto-post" class="foto-post" />

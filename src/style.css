@@ -200,6 +200,12 @@ h4 {
   flex-direction: column;
 }
 
+.header-post {
+  display: flex;
+  gap: 50%;
+  align-items: justify;
+}
+
 h5 {
   margin: 0;
   color: #1b1a1a;
@@ -210,8 +216,10 @@ h5 {
 }
 
 #edit {
-  border-radius: 20px;
+  border-radius: 50px;
   background-color: #E5D9CD;
+  width: 30px;
+  height: 30px;
 }
 
 .user-comment {
