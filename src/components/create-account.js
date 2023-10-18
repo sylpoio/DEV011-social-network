@@ -3,7 +3,7 @@ import {
   accountGoogle,
 } from '../lib/auth';
 
-export const renderCreateAccount = () => {
+export const renderCreateAccount = (navigateTo) => {
   const containerAccount = document.createElement('div');
   containerAccount.classList.add('create-acount-page');
   const signInPage = `
@@ -12,7 +12,7 @@ export const renderCreateAccount = () => {
     <input type='email' placeholder='Correo electrónico' class='inputs'>
     <input type='password' placeholder='Contraseña' class='inputs'>
     <input type='password' placeholder='Confirma contraseña' class='inputs'>
-    <span class='promise-message'></span>
+    <span class='error-message'style='display:none'></span>
     <button id='signin'>Crear</button>
     <button id='signin-google'></button>
     `;
@@ -25,7 +25,8 @@ export const renderCreateAccount = () => {
   const emailInput = containerAccount.querySelector("input[type='email']");
   const passwordInput = containerAccount.querySelector("input[type='password']");
   const confirmPasswordInput = containerAccount.querySelector("input[placeholder='Confirma contraseña']");
-  const promiseMessage = containerAccount.querySelector('.promise-message');
+  const successMessage = containerAccount.querySelector('.success-message');
+  const errorMessage = containerAccount.querySelector('.error-message');
 
   // ---------------------------------Create account functions-----------------------------------
   // Create Account with email
@@ -33,19 +34,24 @@ export const renderCreateAccount = () => {
     const email = emailInput.value;
     const password = passwordInput.value;
     if (password !== confirmPasswordInput.value) {
-      alert('Tu contraseña no coincide');
+      errorMessage.style.display = 'block';
+      errorMessage.innerHTML = 'Tu contraseña no coincide';      
     } else {
       createAccountFunction(email, password)
         .then(() => {
-          promiseMessage.textContent = 'Usuario creado con éxito';
+          navigateTo('/feed');
+      
         })
         .catch((errorCode) => {
+          errorMessage.style.display = 'block';
           if (errorCode === 'auth/invalid-email') {
-            promiseMessage.innerHTML = 'Correo invalido';
+            errorMessage.innerHTML = 'Correo invalido';
           } else if (errorCode === 'auth/weak-password') {
-            promiseMessage.innerHTML = 'La contraseña requiere mínimo 6 caracteres';
+            errorMessage.innerHTML = 'La contraseña requiere mínimo 6 caracteres';
           } else if (errorCode === 'auth/email-already-in-use') {
-            promiseMessage.innerHTML = 'El correo ingresado ya esta registrado';
+            errorMessage.innerHTML = 'El correo ingresado ya esta registrado';
+          } else if (errorCode === 'auth/missing-password') {
+            errorMessage.innerHTML = 'Olvidaste escribir una contraseña'
           }
         });
     }
