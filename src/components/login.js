@@ -10,7 +10,7 @@ export const renderLogin = (navigateTo) => {
   logo.setAttribute('class', 'logo-invertido');
 
   const h1 = document.createElement('h1');
-  h1.textContent = 'Mochileiros';
+  h1.textContent = 'Mochileirxs';
 
   const labelUsername = document.createElement('label');
   labelUsername.setAttribute('for', 'user');
