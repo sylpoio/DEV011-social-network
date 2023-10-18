@@ -101,3 +101,140 @@ h2 {
   font-weight: 400;
   line-height: normal;
 }
+
+.error-message, .span-login {
+  color: white;
+  background-color: darkred;
+  padding: .5%;
+  border-radius: 5px;
+}
+
+.feed {
+  background-image: url(../images/fondo-muro.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 15px;
+  align-items: center;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 8vh;
+  justify-content: space-between;
+  text-align: right;
+}
+
+.share-experience {
+  width: 90%;
+  height: 300px;
+  border-radius: 20px;
+  background-color: #E5D9CD;
+}
+
+.little-logo {
+  width: 10vh;
+  height: 8vh;
+}
+
+h3 {
+  font-family: "Jomhuria", cursive;
+  font-size: 3rem;
+  margin: 0;
+  text-align: center;
+  text-shadow: 0px 4px 4px rgb(238, 242, 242);
+
+}
+
+h4 {
+  margin: 0;
+  flex-shrink: 0;
+  background-color: #063c48;
+  border-radius: 30px;
+  border: 1px solid #032838;
+  color: #d9d9d9;
+  text-align: center;
+  font-size: 1rem;
+  padding: 5px;
+}
+
+#signout {
+  border-radius: 30px;
+  border: 1px solid #119CB1;
+  background: #86A8AF;
+  width: 70%;
+  height: 5%;
+  color: #FFF;
+  text-align: center;
+}
+
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  width: 100%
+}
+
+.square {
+  height: 50%;
+  width: 80%;
+  display: flex;
+  background: #2DA6B9;
+  background-size: cover;
+  background-repeat: no-repeat;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  border-radius: 10px;
+  border: solid #032838;
+}
+.post {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+h5 {
+  margin: 0;
+  color: #1b1a1a;
+  text-align: left;
+  padding: 5px;
+  font-family: serif;
+  font-size: 150%;
+}
+
+#edit {
+  border-radius: 20px;
+  background-color: #E5D9CD;
+}
+
+.user-comment {
+  font-size: 1rem;
+  color: #1b1a1a;
+  font-family: serif;
+}
+
+.text-comment {
+width: 100%;
+height: 60%;
+border-radius: 5px;
+background-color: #E5D9CD;
+}
+
+.image {
+ height: 90%;
+ width: 35vh;
+ /* border: solid; */
+}
+
+.image img {
+  width: 100%;
+  height: 100%; 
+  object-fit: contain;
+}

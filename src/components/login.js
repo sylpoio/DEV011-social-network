@@ -10,7 +10,7 @@ export const renderLogin = (navigateTo) => {
   logo.setAttribute('class', 'logo-invertido');
 
   const h1 = document.createElement('h1');
-  h1.textContent = 'Mochileiros';
+  h1.textContent = 'Mochileirxs';
 
   const labelUsername = document.createElement('label');
   labelUsername.setAttribute('for', 'user');
@@ -32,6 +32,7 @@ export const renderLogin = (navigateTo) => {
 
   const span = document.createElement('span');
   span.classList.add('span-login');
+  span.style.display = 'none';
 
   const btnLogin = document.createElement('button');
   btnLogin.setAttribute('id', 'login');
@@ -74,10 +75,12 @@ export const renderLogin = (navigateTo) => {
     const password = inputLoginPassword.value;
     loginFunction(email, password)
       .then(() => {
-        alert('Te logueaste');
+        navigateTo('/feed');
+      
       })
 
       .catch((errorCode) => {
+        errorSpan.style.display = 'block';
         if (errorCode === 'auth/invalid-email') {
           errorSpan.innerHTML = 'Correo invalido';
         } else if (errorCode === 'auth/invalid-login-credentials') {
