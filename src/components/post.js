@@ -8,11 +8,35 @@ export const renderPost = (navigateTo) => {
         <button id="cancel">❌✖</button>
       </div>
       <label for="inputPost"></label>
-      <input type="text">
+      <input type="text" id= "textPost">
       <button id="uploadPicture">📷</button>
       <button id="publish">Publicar</button>
     </section>
       `;
     containerPost.innerHTML = postPage;
+
+    const cancelBtn = containerPost.querySelector('#cancel');
+    const textPost = containerPost.querySelector ('#textPost');
+    const uploadPictureBtn = containerPost.querySelector('#uploadPicture');
+    const publishBtn = containerPost.querySelector ('#publish');
+
+    // -----------DOM calls-------------------
+
+    textPost.addEventListener = ('keyup', () => {
+
+    });
+    
+    cancelBtn.addEventListener = ('click', () => {
+
+    });
+
+    uploadPictureBtn.addEventListener = ('click', () => {
+      
+    });
+
+    publishBtn.addEventListener = ('click', () => {
+      
+    });
+
     return containerPost;
 };
