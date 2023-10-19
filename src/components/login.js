@@ -99,8 +99,15 @@ export const renderLogin = (navigateTo) => {
 
   // Login with Google
   btnLoginGoogle.addEventListener('click', () => {
-    accountGoogle();
-    navigateTo('/feed');
+    accountGoogle()
+    .then(() => {
+      navigateTo('/feed');
+    })
+    .catch((errorCode) => {
+      errorMessage.style.display = 'block';
+      navigateTo('/signin');
+      console.log(errorCode);
+    });
   });
 
   return container;

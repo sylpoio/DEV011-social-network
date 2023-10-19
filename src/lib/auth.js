@@ -32,23 +32,23 @@ export const accountGoogle = () => new Promise((resolve, reject) => {
  
   signInWithPopup(auth, provider)  
     .then((result) => {
-      resolve();
       // This gives you a Google Access Token. You can use it to access the Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
+      resolve();
       // IdP data available using getAdditionalUserInfo(result)
       console.log(token, user);
     }).catch((error) => {
       // Handle Errors here.
       const errorCodeGoogle = error.code;
       const errorMessage = error.message;
-      reject (errorCodeGoogle);
       // The email of the user's account used.
       const email = error.customData.email;
       // The AuthCredential type that was used.
       const credential = GoogleAuthProvider.credentialFromError(error);
+      reject (errorCodeGoogle);
       console.log(errorMessage, email, credential);
   
 });

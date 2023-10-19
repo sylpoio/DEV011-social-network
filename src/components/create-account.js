@@ -59,9 +59,16 @@ export const renderCreateAccount = (navigateTo) => {
   });
   // Create Account with Google
   btnGoogle.addEventListener('click', () => {
-    accountGoogle();
-    navigateTo('/feed');
-  });
+    accountGoogle()
+    .then(() => {
+      navigateTo('/feed');
+    })
+    .catch((errorCode) => {
+      errorMessage.style.display = 'block';
+      navigateTo('/signin');
+      console.log(errorCode);
+    });
 
+  });
   return containerAccount;
 };
