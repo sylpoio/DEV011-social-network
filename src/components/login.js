@@ -10,7 +10,7 @@ export const renderLogin = (navigateTo) => {
   logo.setAttribute('class', 'logo-invertido');
 
   const h1 = document.createElement('h1');
-  h1.textContent = 'Mochileirxs';
+  h1.textContent = 'Mochileiros';
 
   const labelUsername = document.createElement('label');
   labelUsername.setAttribute('for', 'user');
@@ -100,7 +100,7 @@ export const renderLogin = (navigateTo) => {
   // Login with Google
   btnLoginGoogle.addEventListener('click', () => {
     accountGoogle();
-    alert('Te logueaste');
+    navigateTo('/feed');
   });
 
   return container;

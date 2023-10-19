@@ -60,6 +60,7 @@ export const renderCreateAccount = (navigateTo) => {
   // Create Account with Google
   btnGoogle.addEventListener('click', () => {
     accountGoogle();
+    navigateTo('/feed');
   });
 
   return containerAccount;

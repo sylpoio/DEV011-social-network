@@ -56,7 +56,7 @@ h1 {
   font-size: 1rem;
 }
 #account {
-  width: 100%;
+  width: 50%;
   height: 4%;
   flex-shrink: 0;
   background-color: #119cb1;
