@@ -1,4 +1,6 @@
-export const renderFeed = () => {
+import { signOutFunction } from '../lib/auth' 
+
+export const renderFeed = (navigateTo) => {
   const containerFeed = document.createElement('div');
   containerFeed.classList.add('feed');
   const feedPage = `
@@ -58,5 +60,15 @@ export const renderFeed = () => {
   <section/>
   `;
   containerFeed.innerHTML = feedPage;
+
+  //----------------------Botón salir------------------------
+
+  const exitButton = containerFeed.querySelector('#signout')
+
+  exitButton.addEventListener('click', () => {
+    signOutFunction();
+    navigateTo('/');
+  });
+
   return containerFeed;
 };

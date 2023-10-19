@@ -1,6 +1,6 @@
 import {
   getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
-  GoogleAuthProvider, signInWithPopup,
+  GoogleAuthProvider, signInWithPopup, signOut,
 } from 'firebase/auth';
 /* import { doc, setDoc } from 'firebase/firestore';  */
 
@@ -53,7 +53,7 @@ export const accountGoogle = () => new Promise((resolve, reject) => {
   
 });
 });
-// //---------------------------------Login Function-----------------------------------
+// ---------------------------------Login Function-----------------------------------
 export const loginFunction = (email, password) => new Promise((resolve, reject) => {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
@@ -68,6 +68,10 @@ export const loginFunction = (email, password) => new Promise((resolve, reject) 
       console.error('Error al ingresar el usuario:', errorCode, errorMessage);
     });
 });
+// ----------------------Sign out Function--------------------------------
+export const signOutFunction = () => {
+  signOut(auth);
+};
 
 
 //   //---------------------------------Redirect Feed Function-----------------------------------
