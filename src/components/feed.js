@@ -11,7 +11,7 @@ export const renderFeed = () => {
   </header>
   <button class="share-experience">Comparte tu experiencia</button>
   <section class="posts">
-    <section class="square">
+    <section class="post-square">
       <div class = "post"> 
       <div class = "header-post"> 
         <h5>Usuarix</h5>
@@ -33,10 +33,12 @@ export const renderFeed = () => {
         <textarea class="text-comment" placeholder="deja tu comentario"></textarea>
       </div>
     </section>
-    <section class = "square">
+    <section class="post-square">
       <div class = "post"> 
+      <div class = "header-post"> 
         <h5>Usuarix</h5>
         <button id="edit">🖋</button>
+      </div>
         <p>Miren esta cascada bella</p>
         <div class="image">
           <img src="./images/imagen-muestra-post.png" alt="foto-post" class="foto-post" />

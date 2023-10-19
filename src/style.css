@@ -1,8 +1,6 @@
 body {
+  overflow-x: hidden;
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  height: 100vh;
 }
 .login-page {
   background-image: url(../src/images/Fondo-login.png);
@@ -111,28 +109,26 @@ h2 {
 
 .feed {
   background-image: url(../images/fondo-muro.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100vh;
   display: flex;
+  width: 100%;
   flex-direction: column;
   gap: 20px;
-  padding: 15px;
+  padding: 15px 0 0 0;
   align-items: center;
 }
 
 header {
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 82%;
   height: 8vh;
   justify-content: space-between;
   text-align: right;
 }
 
 .share-experience {
-  width: 90%;
-  height: 300px;
+  width: 82%;
+  height: 10%;
   border-radius: 20px;
   background-color: #E5D9CD;
 }
@@ -181,13 +177,11 @@ h4 {
   width: 100%
 }
 
-.square {
+.post-square {
   height: 50%;
   width: 80%;
   display: flex;
   background: #2DA6B9;
-  background-size: cover;
-  background-repeat: no-repeat;
   flex-direction: column;
   gap: 10px;
   padding: 15px;
@@ -202,8 +196,7 @@ h4 {
 
 .header-post {
   display: flex;
-  gap: 50%;
-  align-items: justify;
+  justify-content: space-between;
 }
 
 h5 {
@@ -237,7 +230,7 @@ background-color: #E5D9CD;
 
 .image {
  height: 90%;
- width: 35vh;
+ width: 100%vh;
  /* border: solid; */
 }
 
