@@ -1,4 +1,4 @@
-export const renderFeed = () => {
+export const renderFeed = (navigateTo) => {
   const containerFeed = document.createElement('div');
   containerFeed.classList.add('feed');
   const feedPage = `
@@ -54,5 +54,18 @@ export const renderFeed = () => {
   <section/>
   `;
   containerFeed.innerHTML = feedPage;
-  return containerFeed;
+  
+// -----------------llamar al dom-------------------
+
+const sharePost = containerFeed.querySelector(".share-experience");
+
+
+// -----------------navigate to renderPost-----------
+
+sharePost.addEventListener ('click', () => {
+  navigateTo('/post');
+});
+
+return containerFeed;
+
 };
