@@ -10,7 +10,7 @@ export const renderLogin = (navigateTo) => {
   logo.setAttribute('class', 'logo-invertido');
 
   const h1 = document.createElement('h1');
-  h1.textContent = 'Mochileirxs';
+  h1.textContent = 'Mochileiros';
 
   const labelUsername = document.createElement('label');
   labelUsername.setAttribute('for', 'user');
@@ -42,9 +42,17 @@ export const renderLogin = (navigateTo) => {
   btnCreateAccount.setAttribute('id', 'account');
   btnCreateAccount.textContent = 'Crear cuenta';
 
+  const divGoogle=document.createElement ('div');
+  divGoogle.setAttribute ('class', 'signin-google');
+
+  const googleLabel=document.createElement ('label');
+  googleLabel.setAttribute ('for', 'signin-google');
+  googleLabel.textContent = 'Continuar con:';
+
   const btnGoogle = document.createElement('button');
   btnGoogle.setAttribute('id', 'login-google');
 
+  divGoogle.append(googleLabel,btnGoogle);
   container.appendChild(logo);
   container.appendChild(h1);
   container.appendChild(labelUsername);
@@ -54,7 +62,7 @@ export const renderLogin = (navigateTo) => {
   container.appendChild(span);
   container.appendChild(btnLogin);
   container.appendChild(btnCreateAccount);
-  container.appendChild(btnGoogle);
+  container.appendChild(divGoogle);
 
   // ---------------------------------addEventListeners-----------------------------------
   const buttonLogin = container.querySelector('#login');
@@ -91,8 +99,15 @@ export const renderLogin = (navigateTo) => {
 
   // Login with Google
   btnLoginGoogle.addEventListener('click', () => {
-    accountGoogle();
-    alert('Te logueaste');
+    accountGoogle()
+    .then(() => {
+      navigateTo('/feed');
+    })
+    .catch((errorCode) => {
+      errorMessage.style.display = 'block';
+      navigateTo('/signin');
+      console.log(errorCode);
+    });
   });
 
   return container;

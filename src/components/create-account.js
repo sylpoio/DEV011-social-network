@@ -14,7 +14,10 @@ export const renderCreateAccount = (navigateTo) => {
     <input type='password' placeholder='Confirma contraseña' class='inputs'>
     <span class='error-message'style='display:none'></span>
     <button id='signin'>Crear</button>
+    <div class='signin-google'>
+    <label for='signin-google'> Continuar con: </label>
     <button id='signin-google'></button>
+    </div>
     `;
 
   containerAccount.innerHTML = signInPage;
@@ -56,8 +59,16 @@ export const renderCreateAccount = (navigateTo) => {
   });
   // Create Account with Google
   btnGoogle.addEventListener('click', () => {
-    accountGoogle();
-  });
+    accountGoogle()
+    .then(() => {
+      navigateTo('/feed');
+    })
+    .catch((errorCode) => {
+      errorMessage.style.display = 'block';
+      navigateTo('/signin');
+      console.log(errorCode);
+    });
 
+  });
   return containerAccount;
 };
