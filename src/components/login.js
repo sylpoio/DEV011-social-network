@@ -73,8 +73,10 @@ export const renderLogin = (navigateTo) => {
   buttonLogin.addEventListener('click', () => {
     const email = inputLoginEmail.value;
     const password = inputLoginPassword.value;
+    console.log(email, password);
     loginFunction(email, password)
       .then(() => {
+        console.log('then');
         navigateTo('/feed');
       })
       .catch((errorCode) => {
