@@ -27,7 +27,7 @@ describe('renderLogin', () => {
     createAccountButton.click();
     expect(navigateToMock).toHaveBeenLastCalledWith('/signin');
   });
-/*   it('cuando se hace click en el botón crear cuenta nos lleva a la url de feed', () => {
+   it('cuando se hace click en el botón crear cuenta nos lleva a la url de feed', () => {
     const DOM = document.createElement('div');
     const navigateToMock = jest.fn();
     const email = document.querySelector('#inputUsername');
@@ -45,7 +45,7 @@ describe('renderLogin', () => {
     const loginButton = DOM.querySelector('#login');
     loginButton.click();
     expect(navigateToMock).toHaveBeenLastCalledWith('/feed');
-  }); */
+  });
 });
 
 
