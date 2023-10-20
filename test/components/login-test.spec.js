@@ -7,6 +7,7 @@ import { renderLogin } from '../../src/components/login';
 
 jest.mock('../../src/lib/auth', () => ({
   loginFunction: jest.fn(() => Promise.resolve()),
+  accountGoogle: jest.fn(() => Promise.resolve()),
 }));
 
 describe('renderLogin', () => {
@@ -27,11 +28,9 @@ describe('renderLogin', () => {
     createAccountButton.click();
     expect(navigateToMock).toHaveBeenLastCalledWith('/signin');
   });
-  it('cuando se hace click en el botón crear cuenta nos lleva a la url de feed', (done) => {
+  it('cuando se hace click en el botón ingresar nos lleva a la url de feed', (done) => {
     const DOM = document.createElement('div');
     const navigateToMock = jest.fn();
-    
-        
     DOM.append(renderLogin(navigateToMock));
     const emailInput = DOM.querySelector('#inputUsername');
     const passwordInput = DOM.querySelector('#inputPassword');
@@ -39,29 +38,19 @@ describe('renderLogin', () => {
     passwordInput.value = '123456';
     const loginButton = DOM.querySelector('#login');
     loginButton.click();
-    
     setTimeout(() => {
       expect(navigateToMock).toHaveBeenLastCalledWith('/feed');
-      done()
+      done();
     });
   });
+  
+
+  it('cuando se hace click en el botón de google nos lleva a la url de feed', () => {
+    const DOM = document.createElement('div');
+    const navigateToMock = jest.fn();
+    DOM.append(renderLogin(navigateToMock));
+    const createAccountButton = DOM.querySelector('#login-google');
+    createAccountButton.click();
+    expect(navigateToMock).toHaveBeenLastCalledWith('/feed');
+  });
 });
-
-
-
-
-
-
-
-
-// describe('renderLogin', () => {
-//   it('tiene un botón para crear cuenta', () => {
-//     const DOM = document.createElement('main');
-//     const div = document.createElement('div');
-//     DOM.appendChild(div);
-//     DOM.setAttribute('id', 'root');
-//     DOM.append(renderCreateAccount);
-//     const haveCreateButton = DOM.querySelector('#signin');
-//     expect(haveCreateButton).toBe(undefined);
-//   });
-// });
