@@ -1,3 +1,5 @@
+import { signOutFunction } from '../lib/auth' 
+
 export const renderFeed = (navigateTo) => {
   const containerFeed = document.createElement('div');
   containerFeed.classList.add('feed');
@@ -69,6 +71,16 @@ const sharePost = containerFeed.querySelector(".share-experience");
 sharePost.addEventListener ('click', () => {
   navigateTo('/post');
 });
+
+
+  //----------------------Botón salir------------------------
+
+  const exitButton = containerFeed.querySelector('#signout')
+
+  exitButton.addEventListener('click', () => {
+    signOutFunction();
+    navigateTo('/');
+  });
 
 return containerFeed;
 
