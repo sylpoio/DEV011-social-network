@@ -133,6 +133,7 @@ h2 {
   gap: 20px;
   padding: 15px 0 0 0;
   align-items: center;
+  height: 100vh;
 }
 
 header {
@@ -248,7 +249,7 @@ background-color: #E5D9CD;
 
 .image {
  height: 90%;
- width: 100%vh;
+ width: 100%;
  /* border: solid; */
 }
 
@@ -256,4 +257,86 @@ background-color: #E5D9CD;
   width: 100%;
   height: 100%; 
   object-fit: contain;
+}
+
+.post-page {
+  background-image: url(../images/fondo-muro.png);
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.post-container {
+  width:90%;
+  height: 90%;
+  background-color: #2DA6B9;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.user-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  width: 95%;
+}
+
+#close {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+}
+
+#textPost {
+  border-radius: 25px;
+  width: 90%;
+  height: 35%;
+  background-color: #E5D9CD;
+  border: none; 
+  margin: 3%;
+  padding: 0;
+  margin-top: -8px;
+  text-align: center;
+  padding: 5px;
+  font-family: Inter;
+  font-size: 1rem;
+}
+
+#textPost::placeholder{
+  color: #8D8B8B;
+  font-family: Inter;
+  font-size: 1rem;
+  padding: 5px;
+}
+
+#uploadPicture {
+  border-radius: 50%;
+  padding: 30px;
+  background-color: #2DA6B9;
+  background-image: url(../images/camera.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: #E5D9CD solid;
+  height: 30vh;
+  width: 30vh;
+}
+
+#publish {
+  width: 35%;
+  height: 7%;
+  flex-shrink: 0;
+  background-color: #063c48;
+  border-radius: 30px;
+  border: 1px solid #E5D9CD;
+  color: #d9d9d9;
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 10px;
 }
