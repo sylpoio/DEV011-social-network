@@ -43,8 +43,23 @@ describe('renderLogin', () => {
       done();
     });
   });
-  
-
+  it('cuando se hace click en el botón ingresar y no cumple los requerimientos para login, muestra los errores correspondientes', () => {
+    const DOM = document.createElement('div');
+    const navigateToMock = jest.fn();
+    DOM.append(renderLogin(navigateToMock));
+    const emailInput = DOM.querySelector('#inputUsername');
+    const passwordInput = DOM.querySelector('#inputPassword');
+    const loginButton = DOM.querySelector('#login');
+    loginButton.click();
+    const errorSpan = DOM.querySelector('.span-login');
+    if (emailInput.value === 'mochilerxs'
+    && passwordInput.value === '') {
+      expect(errorSpan).toBe('Correo invalido');
+    } else if (emailInput.value === 'g@gmail.com'
+    && passwordInput.value === '123456') {
+      expect(errorSpan).toBe('Datos incorrectos, revisa tu correo y contraseña');
+    }
+  });
   it('cuando se hace click en el botón de google nos lleva a la url de feed', () => {
     const DOM = document.createElement('div');
     const navigateToMock = jest.fn();

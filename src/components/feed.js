@@ -1,4 +1,4 @@
-import { signOutFunction } from '../lib/auth' 
+import { signOutFunction } from '../lib/auth';
 
 export const renderFeed = (navigateTo) => {
   const containerFeed = document.createElement('div');
@@ -60,28 +60,25 @@ export const renderFeed = (navigateTo) => {
   <section/>
   `;
   containerFeed.innerHTML = feedPage;
-  
-// -----------------llamar al dom-------------------
 
-const sharePost = containerFeed.querySelector(".share-experience");
+  // -----------------llamar al dom-------------------
 
+  const sharePost = containerFeed.querySelector('.share-experience');
 
-// -----------------navigate to renderPost-----------
+  // -----------------navigate to renderPost-----------
 
-sharePost.addEventListener ('click', () => {
-  navigateTo('/post');
-});
+  sharePost.addEventListener('click', () => {
+    navigateTo('/post');
+  });
 
+  // ----------------------Botón salir------------------------
 
-  //----------------------Botón salir------------------------
-
-  const exitButton = containerFeed.querySelector('#signout')
+  const exitButton = containerFeed.querySelector('#signout');
 
   exitButton.addEventListener('click', () => {
     signOutFunction();
     navigateTo('/');
   });
 
-return containerFeed;
-
+  return containerFeed;
 };
