@@ -81,8 +81,10 @@ export const renderLogin = (navigateTo) => {
   buttonLogin.addEventListener('click', () => {
     const email = inputLoginEmail.value;
     const password = inputLoginPassword.value;
+    console.log(email, password);
     loginFunction(email, password)
       .then(() => {
+        console.log('then');
         navigateTo('/feed');
       })
       .catch((errorCode) => {
@@ -99,15 +101,8 @@ export const renderLogin = (navigateTo) => {
 
   // Login with Google
   btnLoginGoogle.addEventListener('click', () => {
-    accountGoogle()
-    .then(() => {
-      navigateTo('/feed');
-    })
-    .catch((errorCode) => {
-      errorMessage.style.display = 'block';
-      navigateTo('/signin');
-      console.log(errorCode);
-    });
+    accountGoogle();
+    navigateTo('/feed');
   });
 
   return container;
