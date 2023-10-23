@@ -1,8 +1,6 @@
 body {
+  overflow-x: hidden;
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  height: 100vh;
 }
 .login-page {
   background-image: url(../src/images/Fondo-login.png);
@@ -21,10 +19,12 @@ body {
   width: 20vh;
   height: 15vh;
 }
+
 h1 {
   font-family: "Jomhuria", cursive;
   font-size: 4rem;
   margin: 0;
+  text-shadow: 0px 4px 4px #107b8c;
 }
 .inputs {
   border-radius: 30px;
@@ -54,7 +54,7 @@ h1 {
   font-size: 1rem;
 }
 #account {
-  width: 100%;
+  width: 50%;
   height: 4%;
   flex-shrink: 0;
   background-color: #119cb1;
@@ -64,6 +64,21 @@ h1 {
   text-align: center;
   font-size: 1rem;
 }
+
+.signin-google {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+label[for='signin-google'] {
+color: #107b8c;
+background-color: #d9d9d9;
+padding: 0 5px;
+border-radius: 10px;
+}
+
 #signin-google, #login-google {
   background-image: url(../src/images/ícono-google.png);
   width: 5vh;
@@ -100,6 +115,7 @@ h2 {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  text-shadow: 0px 4px 4px #032838;
 }
 
 .error-message, .span-login {
@@ -111,23 +127,29 @@ h2 {
 
 .feed {
   background-image: url(../images/fondo-muro.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100vh;
   display: flex;
+  width: 100%;
   flex-direction: column;
   gap: 20px;
-  padding: 15px;
+  padding: 15px 0 0 0;
   align-items: center;
+  height: 100vh;
 }
 
 header {
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 82%;
   height: 8vh;
   justify-content: space-between;
   text-align: right;
+}
+
+.share-experience {
+  width: 82%;
+  height: 10%;
+  border-radius: 20px;
+  background-color: #E5D9CD;
 }
 
 .little-logo {
@@ -166,15 +188,21 @@ h4 {
   text-align: center;
 }
 
-section {
-  height: 40vh;
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  width: 100%
+}
+
+.post-square {
+  height: 50%;
   width: 80%;
   display: flex;
   background: #2DA6B9;
-  background-size: cover;
-  background-repeat: no-repeat;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   padding: 15px;
   border-radius: 10px;
   border: solid #032838;
@@ -183,26 +211,132 @@ section {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  }
+}
+
+.header-post {
+  display: flex;
+  justify-content: space-between;
+}
 
 h5 {
   margin: 0;
   color: #1b1a1a;
   text-align: left;
-  font-size: 1.2rem;
   padding: 5px;
+  font-family: serif;
+  font-size: 150%;
+}
+
+#edit {
+  border-radius: 50px;
+  background-color: #E5D9CD;
+  width: 30px;
+  height: 30px;
+}
+
+.user-comment {
+  font-size: 1rem;
+  color: #1b1a1a;
   font-family: serif;
 }
 
+.text-comment {
+width: 100%;
+height: 60%;
+border-radius: 5px;
+background-color: #E5D9CD;
+}
+
 .image {
- height: 20vh;
- width: 35vh;
- border: solid;
+ height: 90%;
+ width: 100%;
+ /* border: solid; */
 }
 
 .image img {
-  max-width: 100%;
+  width: 100%;
   height: 100%; 
   object-fit: contain;
-  
+}
+
+.post-page {
+  background-image: url(../images/fondo-muro.png);
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.post-container {
+  width:90%;
+  height: 90%;
+  background-color: #2DA6B9;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.user-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  width: 95%;
+}
+
+#close {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+}
+
+#textPost {
+  border-radius: 25px;
+  width: 90%;
+  height: 35%;
+  background-color: #E5D9CD;
+  border: none; 
+  margin: 3%;
+  padding: 0;
+  margin-top: -8px;
+  text-align: center;
+  padding: 5px;
+  font-family: Inter;
+  font-size: 1rem;
+}
+
+#textPost::placeholder{
+  color: #8D8B8B;
+  font-family: Inter;
+  font-size: 1rem;
+  padding: 5px;
+}
+
+#uploadPicture {
+  border-radius: 50%;
+  padding: 30px;
+  background-color: #2DA6B9;
+  background-image: url(../images/camera.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: #E5D9CD solid;
+  height: 30vh;
+  width: 30vh;
+}
+
+#publish {
+  width: 35%;
+  height: 7%;
+  flex-shrink: 0;
+  background-color: #063c48;
+  border-radius: 30px;
+  border: 1px solid #E5D9CD;
+  color: #d9d9d9;
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 10px;
 }

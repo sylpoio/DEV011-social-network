@@ -14,18 +14,20 @@ export const renderCreateAccount = (navigateTo) => {
     <input type='password' placeholder='Confirma contraseña' class='inputs'>
     <span class='error-message'style='display:none'></span>
     <button id='signin'>Crear</button>
+    <div class='signin-google'>
+    <label for='signin-google'> Continuar con: </label>
     <button id='signin-google'></button>
+    </div>
     `;
 
   containerAccount.innerHTML = signInPage;
 
-  // ---------------------------------addEventListeners--------------------------
+  // ---------------------------------DOM call--------------------------
   const btnCreate = containerAccount.querySelector('#signin');
   const btnGoogle = containerAccount.querySelector('#signin-google');
   const emailInput = containerAccount.querySelector("input[type='email']");
   const passwordInput = containerAccount.querySelector("input[type='password']");
   const confirmPasswordInput = containerAccount.querySelector("input[placeholder='Confirma contraseña']");
-  const successMessage = containerAccount.querySelector('.success-message');
   const errorMessage = containerAccount.querySelector('.error-message');
 
   // ---------------------------------Create account functions-----------------------------------
@@ -35,12 +37,11 @@ export const renderCreateAccount = (navigateTo) => {
     const password = passwordInput.value;
     if (password !== confirmPasswordInput.value) {
       errorMessage.style.display = 'block';
-      errorMessage.innerHTML = 'Tu contraseña no coincide';      
+      errorMessage.innerHTML = 'Tu contraseña no coincide';
     } else {
       createAccountFunction(email, password)
         .then(() => {
           navigateTo('/feed');
-      
         })
         .catch((errorCode) => {
           errorMessage.style.display = 'block';
@@ -51,15 +52,23 @@ export const renderCreateAccount = (navigateTo) => {
           } else if (errorCode === 'auth/email-already-in-use') {
             errorMessage.innerHTML = 'El correo ingresado ya esta registrado';
           } else if (errorCode === 'auth/missing-password') {
-            errorMessage.innerHTML = 'Olvidaste escribir una contraseña'
+            errorMessage.innerHTML = 'Olvidaste escribir una contraseña';
           }
         });
     }
   });
   // Create Account with Google
   btnGoogle.addEventListener('click', () => {
-    accountGoogle();
-  });
+    accountGoogle()
+    .then(() => {
+      navigateTo('/feed');
+    })
+    .catch((errorCode) => {
+      errorMessage.style.display = 'block';
+      navigateTo('/signin');
+      console.log(errorCode);
+    });
 
+  });
   return containerAccount;
 };

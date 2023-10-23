@@ -23,7 +23,7 @@ describe('renderLogin', () => {
     DOM.append(renderLogin());
     const createAccountButton = DOM.querySelector('#account');
     createAccountButton.click();
-  })
+  });
 });
 
 // describe('renderLogin', () => {
