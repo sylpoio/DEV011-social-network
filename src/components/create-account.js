@@ -22,7 +22,7 @@ export const renderCreateAccount = (navigateTo) => {
 
   containerAccount.innerHTML = signInPage;
 
-  // ---------------------------------addEventListeners--------------------------
+  // ---------------------------------DOM call--------------------------
   const btnCreate = containerAccount.querySelector('#signin');
   const btnGoogle = containerAccount.querySelector('#signin-google');
   const emailInput = containerAccount.querySelector("input[type='email']");
