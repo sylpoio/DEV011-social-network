@@ -1,7 +1,9 @@
+import { createPost } from '../lib/database.js';
+
 export const renderPost = (navigateTo) => {
-    const containerPost = document.createElement('div');
-    containerPost.classList.add('post-page');
-    const postPage = `
+  const containerPost = document.createElement('div');
+  containerPost.classList.add('post-page');
+  const postPage = `
     <section class= 'post-container'>
       <div class='user-container'>
         <h5>Usuario</h5>
@@ -13,31 +15,33 @@ export const renderPost = (navigateTo) => {
       <button id="publish">Publicar</button>
     </section>
       `;
-    containerPost.innerHTML = postPage;
+  containerPost.innerHTML = postPage;
 
-    const closeBtn = containerPost.querySelector('#close');
-    const textPost = containerPost.querySelector ('#textPost');
-    const uploadPictureBtn = containerPost.querySelector('#uploadPicture');
-    const publishBtn = containerPost.querySelector ('#publish');
+  const closeBtn = containerPost.querySelector('#close');
+  const textPost = containerPost.querySelector('#textPost');
+  const uploadPictureBtn = containerPost.querySelector('#uploadPicture');
+  const publishBtn = containerPost.querySelector('#publish');
 
-    // -----------DOM calls-------------------
+  // -----------DOM calls-------------------
 
-    textPost.addEventListener('keyup', () => {
+  textPost.addEventListener('keyup', () => {
 
-    });
-  
-    closeBtn.addEventListener('click', () => {
-      console.log('click');
-      navigateTo ('/feed');
-    });
+  });
 
-    uploadPictureBtn.addEventListener('click', () => {
-      console.log('click');
-    });
+  closeBtn.addEventListener('click', () => {
+    console.log('click');
+    navigateTo('/feed');
+  });
 
-    publishBtn.addEventListener('click', () => {
-      console.log('click');
-    });
+  uploadPictureBtn.addEventListener('click', () => {
+    console.log('click');
+  });
 
-    return containerPost;
+  publishBtn.addEventListener('click', () => {
+    const textPostValue = textPost.value;
+    console.log('click', textPostValue);
+    createPost();
+  });
+
+  return containerPost;
 };
