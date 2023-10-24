@@ -3,11 +3,14 @@
 */
 
 import { renderCreateAccount } from '../../src/components/create-account';
-// import { navigateTo } from '../../src/main'
 
 jest.mock('../../src/lib/auth', () => ({
-  createAccountFunction: jest.fn(() => Promise.resolve()),
-  createAccountReject: jest.fn(() => Promise.reject()),
+  createAccountFunction: jest.fn((email, password) => {
+    if (email === 'mochilerxs@gmail.com' && password === '123456') {
+      return Promise.resolve();
+    }
+    return Promise.reject();
+  }),
   accountGoogle: jest.fn(() => Promise.resolve()),
 }));
 

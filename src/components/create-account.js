@@ -62,11 +62,6 @@ export const renderCreateAccount = (navigateTo) => {
     accountGoogle()
       .then(() => {
         navigateTo('/feed');
-      })
-      .catch((errorCode) => {
-        errorMessage.style.display = 'block';
-        navigateTo('/signin');
-        console.log(errorCode);
       });
   });
   return containerAccount;
