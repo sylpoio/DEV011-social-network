@@ -148,15 +148,6 @@ header {
   text-align: right;
 }
 
-.share-experience {
-  width: 82%;
-  height: 10%;
-  border-radius: 20px;
-  background-color: #e5d9cd;
-  padding: 5px;
-  font-size: 1rem;
-}
-
 .little-logo {
   width: 10vh;
   height: 8vh;
@@ -192,12 +183,28 @@ h4 {
   text-align: center;
 }
 
+.share-experience {
+  width: 82%;
+  height: 10%;
+  border-radius: 20px;
+  background-color: #e5d9cd;
+  padding: 5px;
+  font-size: 1rem;
+}
+
 .posts {
   display: flex;
   flex-direction: column;
   gap: 10px;
   align-items: center;
   width: 100%;
+}
+
+@media only screen and (min-width: 900px) {
+  .image {
+    /* height: 10%!important; */
+    width: 800px!important;
+  }
 }
 
 .post-square {
@@ -210,6 +217,7 @@ h4 {
   padding: 15px;
   border-radius: 10px;
 }
+
 .post {
   display: flex;
   justify-content: space-between;
@@ -220,6 +228,17 @@ h4 {
 .header-post {
   display: flex;
   justify-content: space-between;
+}
+
+.image {
+  height: 50%;
+  width: 100%;
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .interactions {
@@ -264,18 +283,6 @@ h5 {
   width: 30px;
   height: 30px;
   font-size: 1.2rem;
-}
-
-.image {
-  height: 90%;
-  width: 100%vh;
-  /* border: solid; */
-}
-
-.image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
 }
 
 .post-page {
