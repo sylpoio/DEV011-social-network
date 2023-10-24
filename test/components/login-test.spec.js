@@ -6,7 +6,12 @@ import { renderLogin } from '../../src/components/login';
 // import { navigateTo } from '../../src/main'
 
 jest.mock('../../src/lib/auth', () => ({
-  loginFunction: jest.fn(() => Promise.resolve()),
+  loginFunction: jest.fn((email, password) => {
+    if (email === 'mochilerxs@gmail.com' && password === '123456') {
+      return Promise.resolve();
+    }
+    return Promise.reject();
+  }),
   accountGoogle: jest.fn(() => Promise.resolve()),
 }));
 
