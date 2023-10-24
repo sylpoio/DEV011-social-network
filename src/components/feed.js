@@ -69,6 +69,18 @@ export const renderFeed = (navigateTo) => {
   <section/>
   `;
   containerFeed.innerHTML = feedPage;
+  
+// -----------------llamar al dom-------------------
+
+const sharePost = containerFeed.querySelector(".share-experience");
+
+
+// -----------------navigate to renderPost-----------
+
+sharePost.addEventListener ('click', () => {
+  navigateTo('/post');
+});
+
 
   //----------------------Botón salir------------------------
 
@@ -79,5 +91,6 @@ export const renderFeed = (navigateTo) => {
     navigateTo('/');
   });
 
-  return containerFeed;
+return containerFeed;
+
 };
