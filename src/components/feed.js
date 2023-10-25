@@ -1,7 +1,7 @@
 import { signOutFunction } from '../lib/auth';
 import { querySnapshot } from '../lib/database';
 
-function renderPostContainer() {
+function renderPostContainer(renderTextPost) {
   const postContainer = document.createElement('section');
   postContainer.classList.add('post-square');
   const postContainerPage = `
@@ -14,7 +14,7 @@ function renderPostContainer() {
           </div>
         </div>
         <div class="container-text-post">
-          <p class="render-text-post"></p>
+          <p class="render-text-post">${renderTextPost}</p>
         </div>
         <picture class = "image">
           <img src="./images/imagen-muestra-post.png" alt="foto-post" class="foto-post" />
@@ -55,7 +55,6 @@ export const renderFeed = (navigateTo) => {
 
   // -----------------llamar al dom-------------------
   const sharePost = containerFeed.querySelector('.share-experience');
-  const postContainer = containerFeed.querySelector('.container-text-post');
 
   // -----------------navigate to renderPost-----------
 
@@ -76,11 +75,11 @@ export const renderFeed = (navigateTo) => {
     docs.forEach((doc) => {
       console.log(doc.id);
       console.log(doc.data());
-      renderPostContainer();
-      const renderTextPost = containerFeed.querySelector('.render-text-post');
-      renderTextPost.textContent = doc.data().post;
-      console.log(renderTextPost, 'estees');
-      postContainer.append(renderTextPost);
+      const renderTextPost = doc.data().post;
+      renderPostContainer(renderTextPost);
+      // const renderTextPost = postContainer.querySelector('.render-text-post');
+      // console.log(renderTextPost, 'estees');
+      // postContainer.append(renderTextPost);
     });
   });
   return containerFeed;
