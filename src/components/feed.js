@@ -15,45 +15,54 @@ export const renderFeed = (navigateTo) => {
   <section class="posts">
     <section class="post-square">
       <div class = "post"> 
-      <div class = "header-post"> 
-        <h5>Usuarix</h5>
-        <button id="edit">🖋</button>
-      </div> 
+        <div class = "header-post"> 
+          <h5>Usuarix</h5>
+          <div>
+            <button id="edit">🖋</button>
+            <button id="delete">🗑</button>
+          </div>
+        </div> 
         <p>Miren esta cascada bella</p>
-        <div class = "image">
-        <img src="/images/imagen-muestra-post.png" alt="foto-post" class="foto-post" />
+        <picture class = "image">
+          <img src="./images/imagen-muestra-post.png" alt="foto-post" class="foto-post" />
+        </picture>
+        <div class = "interactions">
+          <div class= "reactions">
+            <button id="like">✈️</button>
+            <span id="like-counter">contador</span>
+          </div>
+        <button id="comment">💬</button>
         </div>
       </div>  
-      <div class = "reactions">
-        <button id="like">✈️</button>
-        <span id="like-counter">contador</span>
-        <button id="comment">💬</button>
-        <button id="delete">🗑</button>
-      </div>
       <div class="comment">
         <h5 class="user-comment">Usuarix</h5>
         <textarea class="text-comment" placeholder="deja tu comentario"></textarea>
       </div>
     </section>
+    <section class="posts">
     <section class="post-square">
       <div class = "post"> 
       <div class = "header-post"> 
         <h5>Usuarix</h5>
-        <button id="edit">🖋</button>
-      </div>
+        <div>
+          <button id="edit">🖋</button>
+          <button id="delete">🗑</button>
+        </div>
+      </div> 
         <p>Miren esta cascada bella</p>
-        <div class="image">
-          <img src="/images/imagen-muestra-post.png" alt="foto-post" class="foto-post" />
+        <div class = "image">
+        <img src="./images/imagen-muestra-post.png" alt="foto-post" class="foto-post" />
         </div>
       </div>  
-      <div class = "reactions">
-        <button id="like">✈️</button>
-        <span id="like-counter">contador</span>
+      <div class = "interactions">
+        <div class= "reactions">
+          <button id="like">✈️</button>
+          <span id="like-counter">contador</span>
+        </div>
         <button id="comment">💬</button>
-        <button id="delete">🗑</button>
       </div>
-      <div class= "comment">
-      <h5 class="user-comment">Usuarix</h5>
+      <div class="comment">
+        <h5 class="user-comment">Usuarix</h5>
         <textarea class="text-comment" placeholder="deja tu comentario"></textarea>
       </div>
     </section>
