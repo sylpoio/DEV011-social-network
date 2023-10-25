@@ -126,7 +126,7 @@ h2 {
 }
 
 .feed {
-  background-image: url(./images/fondo-muro.png);
+  background-image: url(/images/fondo-muro.png);
   display: flex;
   width: 100%;
   flex-direction: column;
