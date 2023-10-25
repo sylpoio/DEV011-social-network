@@ -38,9 +38,7 @@ export const renderPost = (navigateTo) => {
   });
 
   publishBtn.addEventListener('click', () => {
-    const textPostValue = textPost.value;
-    console.log('click', textPostValue);
-    createPost();
+    console.log('click');
   });
 
   return containerPost;
