@@ -21,7 +21,7 @@ export const renderFeed = (navigateTo) => {
       </div> 
         <p>Miren esta cascada bella</p>
         <div class = "image">
-        <img src="images/imagen-muestra-post.png" alt="foto-post" class="foto-post" />
+        <img src="/images/imagen-muestra-post.png" alt="foto-post" class="foto-post" />
         </div>
       </div>  
       <div class = "reactions">
@@ -43,7 +43,7 @@ export const renderFeed = (navigateTo) => {
       </div>
         <p>Miren esta cascada bella</p>
         <div class="image">
-          <img src="./images/imagen-muestra-post.png" alt="foto-post" class="foto-post" />
+          <img src="/images/imagen-muestra-post.png" alt="foto-post" class="foto-post" />
         </div>
       </div>  
       <div class = "reactions">
