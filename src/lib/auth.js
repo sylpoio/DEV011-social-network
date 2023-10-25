@@ -29,8 +29,8 @@ export const accountGoogle = () => new Promise((resolve, reject) => {
   const provider = new GoogleAuthProvider();
   console.log('Button with id "google" clicked');
   console.log('Provider:', provider);
- 
-  signInWithPopup(auth, provider)  
+
+  signInWithPopup(auth, provider)
     .then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -48,10 +48,9 @@ export const accountGoogle = () => new Promise((resolve, reject) => {
       const email = error.customData.email;
       // The AuthCredential type that was used.
       const credential = GoogleAuthProvider.credentialFromError(error);
-      reject (errorCodeGoogle);
+      reject(errorCodeGoogle);
       console.log(errorMessage, email, credential);
-  
-});
+    });
 });
 // ---------------------------------Login Function-----------------------------------
 export const loginFunction = (email, password) => new Promise((resolve, reject) => {
@@ -72,7 +71,6 @@ export const loginFunction = (email, password) => new Promise((resolve, reject) 
 export const signOutFunction = () => {
   signOut(auth);
 };
-
 
 //   //---------------------------------Redirect Feed Function-----------------------------------
 //   getRedirectResult(auth)
