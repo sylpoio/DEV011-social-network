@@ -3,7 +3,7 @@ body {
   margin: 0;
 }
 .login-page {
-  background-image: url(./images/Fondo-login.png);
+  background-image: url(/images/Fondo-login.png);
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
@@ -80,7 +80,7 @@ border-radius: 10px;
 }
 
 #signin-google, #login-google {
-  background-image: url(./images/ícono-google.png);
+  background-image: url(/images/ícono-google.png);
   width: 5vh;
   height: 5vh;
   border-radius: 50%;
@@ -90,7 +90,7 @@ border-radius: 10px;
 }
 
 .create-acount-page {
-  background-image: url(./images/Fondo-cuenta.png);
+  background-image: url(/images/Fondo-cuenta.png);
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
@@ -260,7 +260,7 @@ background-color: #E5D9CD;
 }
 
 .post-page {
-  background-image: url(./images/fondo-muro.png);
+  background-image: url(/images/fondo-muro.png);
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -320,7 +320,7 @@ background-color: #E5D9CD;
   border-radius: 50%;
   padding: 30px;
   background-color: #2DA6B9;
-  background-image: url(./images/camera.png);
+  background-image: url(/images/camera.png);
   background-repeat: no-repeat;
   background-size: contain;
   border: #E5D9CD solid;
