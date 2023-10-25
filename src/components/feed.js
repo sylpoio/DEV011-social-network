@@ -5,7 +5,7 @@ export const renderFeed = (navigateTo) => {
   containerFeed.classList.add('feed');
   const feedPage = `
   <header>
-    <img src="./images/LogoPeque.png" alt="logo-mochileiros" class="little-logo" />
+    <img src="images/LogoPeque.png" alt="logo-mochileiros" class="little-logo" />
     <h3>Mochileirxs</h3>
     <div class="signout-button">
     <h4 class="user">Usuarix</h4>
@@ -21,7 +21,7 @@ export const renderFeed = (navigateTo) => {
       </div> 
         <p>Miren esta cascada bella</p>
         <div class = "image">
-        <img src="./images/imagen-muestra-post.png" alt="foto-post" class="foto-post" />
+        <img src="images/imagen-muestra-post.png" alt="foto-post" class="foto-post" />
         </div>
       </div>  
       <div class = "reactions">
