@@ -21,7 +21,6 @@ export const renderPost = (navigateTo) => {
   const textPost = containerPost.querySelector('#textPost');
   const uploadPictureBtn = containerPost.querySelector('#uploadPicture');
   const publishBtn = containerPost.querySelector('#publish');
-
   // -----------DOM calls-------------------
 
   textPost.addEventListener('keyup', () => {
@@ -38,6 +37,9 @@ export const renderPost = (navigateTo) => {
   });
 
   publishBtn.addEventListener('click', () => {
+    const textPostValue = textPost.value;
+    createPost(textPostValue);
+    navigateTo('/feed');
     console.log('click');
   });
 

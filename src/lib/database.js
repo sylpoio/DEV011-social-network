@@ -1,7 +1,11 @@
-import { db, addDoc, collection } from './firebase.js';
+import {
+  db, addDoc, collection, getDocs,
+} from './firebase.js';
 
-export const createPost = () => {
+export const createPost = (post) => {
   addDoc(collection(db, 'posts'), {
-    post: 'Ada',
+    post,
   });
 };
+
+export const querySnapshot = getDocs(collection(db, 'posts'));
