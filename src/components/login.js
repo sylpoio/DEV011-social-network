@@ -65,19 +65,21 @@ export const renderLogin = (navigateTo) => {
   container.appendChild(btnCreateAccount);
   container.appendChild(divGoogle);
 
-  // ---------------------------------addEventListeners-----------------------------------
+  // ---------------------------------DOM calls-----------------------------------
   const buttonLogin = container.querySelector('#login');
   const btnLoginGoogle = container.querySelector('#login-google');
   const inputLoginEmail = container.querySelector('#inputUsername');
   const inputLoginPassword = container.querySelector('#inputPassword');
   const buttnCreateAccount = container.querySelector('#account');
   const errorSpan = container.querySelector('.span-login');
+  
+  
+  // ---------------------------------addEventListeners---------------------------------
 
   buttnCreateAccount.addEventListener('click', () => {
-    navigateTo('/signin');
-  });
+  navigateTo('/signin');
+});
 
-  // ---------------------------------Login functions---------------------------------
   // Login email and password
   buttonLogin.addEventListener('click', () => {
     const email = inputLoginEmail.value;
