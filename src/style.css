@@ -118,6 +118,12 @@ h2 {
   line-height: normal;
   text-shadow: 0px 4px 4px #032838;
 }
+.error {
+  color: rgb(151, 3, 3);
+  text-shadow: none;
+  padding: 5%;
+  font-size: 3rem;
+}
 
 .error-message,
 .span-login {
