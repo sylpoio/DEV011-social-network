@@ -1,5 +1,5 @@
 import {
-  db, addDoc, collection, getDocs, onSnapshot
+  db, addDoc, collection, getDocs, onSnapshot, query, orderBy
 } from './firebase.js';
 
 const postCollection = collection(db, 'posts');
@@ -7,9 +7,12 @@ const postCollection = collection(db, 'posts');
 export const createPost = (post) => {
   addDoc(postCollection, {
     post,
+    date: Date.now(),
   });
 };
 
 export const querySnapshot = getDocs(postCollection);
 
-export paintRealTime = (callback) => onSnapshot(postCollection, callback)
+const q = query(postCollection, orderBy('date', 'desc'));
+
+export const paintRealTime = (callback) => onSnapshot(q, callback);
