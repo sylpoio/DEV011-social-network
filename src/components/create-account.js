@@ -2,12 +2,13 @@ import {
   createAccountFunction,
   accountGoogle,
 } from '../lib/auth';
+import LogoPeque from '../images/LogoPeque.png';
 
 export const renderCreateAccount = (navigateTo) => {
   const containerAccount = document.createElement('div');
   containerAccount.classList.add('create-acount-page');
   const signInPage = `
-    <img src='/images/LogoPeque.png' alt='logo-mochileiros' class='logo'>
+    <img src=${LogoPeque} alt='logo-mochileiros' class='logo'>
     <h2>Crear cuenta</h2>
     <input type='email' placeholder='Correo electrónico' class='inputs'>
     <input type='password' placeholder='Contraseña' class='inputs'>

@@ -1,11 +1,12 @@
 import { signOutFunction } from '../lib/auth' 
+import LogoPeque from '../images/LogoPeque.png';
 
 export const renderFeed = (navigateTo) => {
   const containerFeed = document.createElement('div');
   containerFeed.classList.add('feed');
   const feedPage = `
   <header>
-    <img src="images/LogoPeque.png" alt="logo-mochileiros" class="little-logo" />
+    <img src=${LogoPeque} alt="logo-mochileiros" class="little-logo" />
     <h3>Mochileirxs</h3>
     <div class="signout-button">
     <h4 class="user">Usuarix</h4>

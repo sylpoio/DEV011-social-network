@@ -1,11 +1,12 @@
 import { loginFunction, accountGoogle } from '../lib/auth';
+import LogoinversoPeque from '../images/LogoinversoPeque.png';
 
 export const renderLogin = (navigateTo) => {
   const container = document.createElement('div');
   container.classList.add('login-page');
 
   const logo = document.createElement('img');
-  logo.setAttribute('src', '/images/LogoinversoPeque.png');
+  logo.setAttribute('src', LogoinversoPeque);
   logo.setAttribute('alt', 'Logo mochileiros');
   logo.setAttribute('class', 'logo-invertido');
 
