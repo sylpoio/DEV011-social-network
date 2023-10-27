@@ -1,6 +1,6 @@
 import {
   createAccountFunction,
-  accountGoogle,
+  accountGoogle, googlePersistanceFunction, authPersistanceFunction,
 } from '../lib/auth';
 import LogoPeque from '../images/LogoPeque.png';
 
@@ -42,6 +42,7 @@ export const renderCreateAccount = (navigateTo) => {
     } else {
       createAccountFunction(email, password)
         .then(() => {
+          authPersistanceFunction();
           navigateTo('/feed');
         })
         .catch((errorCode) => {
@@ -61,15 +62,10 @@ export const renderCreateAccount = (navigateTo) => {
   // Create Account with Google
   btnGoogle.addEventListener('click', () => {
     accountGoogle()
-    .then(() => {
-      navigateTo('/feed');
-    })
-    .catch((errorCode) => {
-      errorMessage.style.display = 'block';
-      navigateTo('/signin');
-      console.log(errorCode);
-    });
-
+      .then(() => {
+        googlePersistanceFunction();
+        navigateTo('/feed');
+      });
   });
   return containerAccount;
 };

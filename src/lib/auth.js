@@ -1,6 +1,7 @@
 import {
   getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
-  GoogleAuthProvider, signInWithPopup, signOut,
+  GoogleAuthProvider, signInWithPopup, signOut, setPersistence,
+  browserSessionPersistence,
 } from 'firebase/auth';
 /* import { doc, setDoc } from 'firebase/firestore';  */
 
@@ -71,3 +72,30 @@ export const loginFunction = (email, password) => new Promise((resolve, reject) 
 export const signOutFunction = () => {
   signOut(auth);
 };
+// ---------------------------------Persistence Function-----------------------------------
+export const authPersistanceFunction = (email, password) => new Promise((resolve, reject) => {
+  setPersistence(auth, browserSessionPersistence)
+    .then(() => {
+      resolve(loginFunction(email, password));
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      reject(errorCode);
+      console.log(errorMessage);
+    });
+});
+
+export const googlePersistanceFunction = () => new Promise((resolve, reject) => {
+  setPersistence(auth, browserSessionPersistence)
+    .then(() => {
+      console.log('google persist');
+      resolve(accountGoogle());
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      reject(errorCode);
+      console.log(errorMessage);
+    });
+});
