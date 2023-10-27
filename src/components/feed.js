@@ -2,13 +2,13 @@ import { signOutFunction } from '../lib/auth';
 import { querySnapshot, paintRealTime } from '../lib/database';
 import LogoPeque from '../images/LogoPeque.png';
 
-function renderPostContainer(renderTextPost) {
+function renderPostContainer(renderTextPost, renderDisplayName) {
   const postContainer = document.createElement('section');
   postContainer.classList.add('post-square');
   const postContainerPage = `
     <div class = "post"> 
     <div class = "header-post"> 
-      <h5>Usuarix</h5>
+      <h5>${renderDisplayName}</h5>
       <div>
         <button id="edit">🖋</button>
         <button id="delete">🗑</button>
@@ -88,7 +88,8 @@ export const renderFeed = (navigateTo) => {
       console.log(doc.id);
       console.log(doc.data());
       const renderTextPost = doc.data().post;
-      renderPostContainer(renderTextPost);
+      const renderDisplayName = doc.data().displayName;
+      renderPostContainer(renderTextPost, renderDisplayName);
     });
   });
   return containerFeed;

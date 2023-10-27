@@ -4,11 +4,11 @@ import {
 
 const postCollection = collection(db, 'posts');
 export const createPost = (post) => {
-  // const currentUser = sessionStorage.getItem('usuarioLogeado');
+  const currentUser = sessionStorage.getItem('usuarioLogeado');
   addDoc(postCollection, {
     post,
     date: Date.now(),
-    // displayName: currentUser,
+    displayName: currentUser,
   });
 };
 
