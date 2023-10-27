@@ -41,12 +41,13 @@ function renderPostContainer(renderTextPost) {
 export const renderFeed = (navigateTo) => {
   const containerFeed = document.createElement('div');
   containerFeed.classList.add('feed');
+  const currentUser = sessionStorage.getItem('usuarioLogeado');
   const feedPage = `
   <header>
     <img src=${LogoPeque} class="little-logo" />
     <h3>Mochileirxs</h3>
     <div class="signout-button">
-    <h4 class="user">Usuarix</h4>
+    <h4 class="user">${currentUser}</h4>
     <button id="signout">Salir</button>
   </header>
   <button class="share-experience">Comparte tu experiencia</button>
