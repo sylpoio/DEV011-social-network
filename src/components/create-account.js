@@ -43,7 +43,7 @@ export const renderCreateAccount = (navigateTo) => {
       errorMessage.style.display = 'block';
       errorMessage.innerHTML = 'Tu contraseña no coincide';
     } else {
-      createAccountFunction(email, password)
+      createAccountFunction(email, password, username)
         .then(() => {
           authPersistanceFunction();
           navigateTo('/feed');

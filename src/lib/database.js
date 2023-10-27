@@ -1,13 +1,14 @@
 import {
-  db, addDoc, collection, getDocs, onSnapshot, query, orderBy
+  db, addDoc, collection, getDocs, onSnapshot, query, orderBy,
 } from './firebase.js';
 
 const postCollection = collection(db, 'posts');
-
 export const createPost = (post) => {
+  // const currentUser = sessionStorage.getItem('usuarioLogeado');
   addDoc(postCollection, {
     post,
     date: Date.now(),
+    // displayName: currentUser,
   });
 };
 

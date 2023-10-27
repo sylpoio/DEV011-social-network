@@ -1,7 +1,7 @@
 import {
   getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
   GoogleAuthProvider, signInWithPopup, signOut, setPersistence,
-  browserSessionPersistence,
+  browserSessionPersistence, updateProfile,
 } from 'firebase/auth';
 /* import { doc, setDoc } from 'firebase/firestore';  */
 
@@ -9,11 +9,21 @@ const auth = getAuth();
 
 // ---------------------------------Create Account Function-----------------------------------
 
-export const createAccountFunction = (email, password) => new Promise((resolve, reject) => {
+export const createAccountFunction = (
+  email,
+  password,
+  username,
+) => new Promise((resolve, reject) => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      console.log('AUTH USER', auth.currentUser);
+      updateProfile(auth.currentUser, {
+        displayName: username,
+      }).then(() => {
+        console.log('AUTH USER', auth.currentUser);
+      }).catch((error) => {
+        console.log(error);
+      });
       resolve();
       console.log('Usuario creado con éxito:', user);
     })
@@ -99,4 +109,12 @@ export const googlePersistanceFunction = () => new Promise((resolve, reject) => 
       reject(errorCode);
       console.log(errorMessage);
     });
+});
+
+export const stateChanged = auth.onAuthStateChanged((user) => {
+  if (user) {
+    const displayedName = user.displayName;
+    console.log('por aquí usuario', displayedName);
+    sessionStorage.setItem('usuarioLogeado', displayedName);
+  }
 });
