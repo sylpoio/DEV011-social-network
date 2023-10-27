@@ -1,4 +1,7 @@
-import { loginFunction, accountGoogle } from '../lib/auth';
+import {
+  loginFunction, accountGoogle, authPersistanceFunction,
+  googlePersistanceFunction,
+} from '../lib/auth';
 import LogoinversoPeque from '../images/LogoinversoPeque.png';
 
 export const renderLogin = (navigateTo) => {
@@ -85,6 +88,7 @@ export const renderLogin = (navigateTo) => {
     const password = inputLoginPassword.value;
     loginFunction(email, password)
       .then(() => {
+        authPersistanceFunction();
         navigateTo('/feed');
       })
       .catch((errorCode) => {
@@ -103,12 +107,8 @@ export const renderLogin = (navigateTo) => {
   btnLoginGoogle.addEventListener('click', () => {
     accountGoogle()
       .then(() => {
+        googlePersistanceFunction();
         navigateTo('/feed');
-      })
-      .catch((errorCode) => {
-        errorMessage.style.display = 'block';
-        navigateTo('/signin');
-        console.log(errorCode);
       });
   });
 
