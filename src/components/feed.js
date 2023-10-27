@@ -1,10 +1,10 @@
-import { signOutFunction } from "../lib/auth";
-import { querySnapshot, paintRealTime } from "../lib/database";
-import LogoPeque from "../images/LogoPeque.png";
+import { signOutFunction } from '../lib/auth';
+import { querySnapshot, paintRealTime } from '../lib/database';
+import LogoPeque from '../images/LogoPeque.png';
 
 function renderPostContainer(renderTextPost) {
-  const postContainer = document.createElement("section");
-  postContainer.classList.add("post-square");
+  const postContainer = document.createElement('section');
+  postContainer.classList.add('post-square');
   const postContainerPage = `
     <div class = "post"> 
     <div class = "header-post"> 
@@ -34,13 +34,13 @@ function renderPostContainer(renderTextPost) {
   </div>
   `;
   postContainer.innerHTML = postContainerPage;
-  const posts = document.querySelector(".posts");
+  const posts = document.querySelector('.posts');
   return posts.appendChild(postContainer);
 }
 
 export const renderFeed = (navigateTo) => {
-  const containerFeed = document.createElement("div");
-  containerFeed.classList.add("feed");
+  const containerFeed = document.createElement('div');
+  containerFeed.classList.add('feed');
   const feedPage = `
   <header>
     <img src=${LogoPeque} class="little-logo" />
@@ -55,21 +55,21 @@ export const renderFeed = (navigateTo) => {
   containerFeed.innerHTML = feedPage;
 
   // -----------------llamar al dom-------------------
-  const sharePost = containerFeed.querySelector(".share-experience");
+  const sharePost = containerFeed.querySelector('.share-experience');
 
   // -----------------navigate to renderPost-----------
 
-  sharePost.addEventListener("click", () => {
-    navigateTo("/post");
+  sharePost.addEventListener('click', () => {
+    navigateTo('/post');
   });
 
   // ----------------------Botón salir------------------------
 
-  const exitButton = containerFeed.querySelector("#signout");
+  const exitButton = containerFeed.querySelector('#signout');
 
-  exitButton.addEventListener("click", () => {
+  exitButton.addEventListener('click', () => {
     signOutFunction();
-    navigateTo("/");
+    navigateTo('/');
   });
 
   // querySnapshot.then((docs) => {
@@ -84,11 +84,11 @@ export const renderFeed = (navigateTo) => {
     const sectionPosts = containerFeed.querySelector('.posts');
     sectionPosts.textContent = '';
     querySnapshot.forEach((doc) => {
-        console.log(doc.id);
-        console.log(doc.data());
-        const renderTextPost = doc.data().post;
-        renderPostContainer(renderTextPost);
-      });
+      console.log(doc.id);
+      console.log(doc.data());
+      const renderTextPost = doc.data().post;
+      renderPostContainer(renderTextPost);
     });
+  });
   return containerFeed;
 };
