@@ -10,6 +10,7 @@ export const renderCreateAccount = (navigateTo) => {
   const signInPage = `
     <img src=${LogoPeque} alt='logo-mochileiros' class='logo'>
     <h2>Crear cuenta</h2>
+    <input type='text' placeholder='Usuario' class='inputs'>
     <input type='email' placeholder='Correo electrónico' class='inputs'>
     <input type='password' placeholder='Contraseña' class='inputs'>
     <input type='password' placeholder='Confirma contraseña' class='inputs'>
@@ -26,6 +27,7 @@ export const renderCreateAccount = (navigateTo) => {
   // ---------------------------------DOM call--------------------------
   const btnCreate = containerAccount.querySelector('#signin');
   const btnGoogle = containerAccount.querySelector('#signin-google');
+  const userInput = containerAccount.querySelector("input[type='text']");
   const emailInput = containerAccount.querySelector("input[type='email']");
   const passwordInput = containerAccount.querySelector("input[type='password']");
   const confirmPasswordInput = containerAccount.querySelector("input[placeholder='Confirma contraseña']");
@@ -34,6 +36,7 @@ export const renderCreateAccount = (navigateTo) => {
   // ---------------------------------Create account functions-----------------------------------
   // Create Account with email
   btnCreate.addEventListener('click', () => {
+    const username = userInput.value;
     const email = emailInput.value;
     const password = passwordInput.value;
     if (password !== confirmPasswordInput.value) {

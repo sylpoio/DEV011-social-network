@@ -13,6 +13,7 @@ export const createAccountFunction = (email, password) => new Promise((resolve, 
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
+      console.log('AUTH USER', auth.currentUser);
       resolve();
       console.log('Usuario creado con éxito:', user);
     })
