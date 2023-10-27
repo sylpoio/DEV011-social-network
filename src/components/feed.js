@@ -46,9 +46,10 @@ export const renderFeed = (navigateTo) => {
   <header>
     <img src=${LogoPeque} class="little-logo" />
     <h3>Mochileirxs</h3>
-    <div class="signout-button">
-    <h4 class="user">${currentUser}</h4>
-    <button id="signout">Salir</button>
+    <div class="user-info">
+      <h4 class="user">${currentUser}</h4>
+      <button id="signout">Salir</button>
+    </div>
   </header>
   <button class="share-experience">Comparte tu experiencia</button>
   <section class="posts"></section>

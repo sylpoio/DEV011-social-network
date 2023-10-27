@@ -8,6 +8,9 @@ export const renderLogin = (navigateTo) => {
   const container = document.createElement('div');
   container.classList.add('login-page');
 
+  const sectionContainer = document.createElement('section');
+  sectionContainer.classList.add('section-entry');
+
   const logo = document.createElement('img');
   logo.setAttribute('src', LogoinversoPeque);
   logo.setAttribute('alt', 'Logo mochileiros');
@@ -57,16 +60,19 @@ export const renderLogin = (navigateTo) => {
   btnGoogle.setAttribute('id', 'login-google');
 
   divGoogle.append(googleLabel, btnGoogle);
-  container.appendChild(logo);
-  container.appendChild(h1);
-  container.appendChild(labelUsername);
-  container.appendChild(labelPassword);
-  container.appendChild(inputUsername);
-  container.appendChild(inputPassword);
-  container.appendChild(span);
-  container.appendChild(btnLogin);
-  container.appendChild(btnCreateAccount);
-  container.appendChild(divGoogle);
+  sectionContainer.append(
+    logo,
+    h1,
+    labelUsername,
+    labelPassword,
+    inputUsername,
+    inputPassword,
+    span,
+    btnLogin,
+    btnCreateAccount,
+    divGoogle,
+  );
+  container.appendChild(sectionContainer);
 
   // ---------------------------------DOM calls-----------------------------------
   const buttonLogin = container.querySelector('#login');

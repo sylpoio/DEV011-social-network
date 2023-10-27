@@ -8,18 +8,21 @@ export const renderCreateAccount = (navigateTo) => {
   const containerAccount = document.createElement('div');
   containerAccount.classList.add('create-acount-page');
   const signInPage = `
-    <img src=${LogoPeque} alt='logo-mochileiros' class='logo'>
-    <h2>Crear cuenta</h2>
-    <input type='text' placeholder='Usuario' class='inputs'>
-    <input type='email' placeholder='Correo electrónico' class='inputs'>
-    <input type='password' placeholder='Contraseña' class='inputs'>
-    <input type='password' placeholder='Confirma contraseña' class='inputs'>
-    <span class='error-message'style='display:none'></span>
-    <button id='signin'>Crear</button>
-    <div class='signin-google'>
-    <label for='signin-google'> Continuar con: </label>
-    <button id='signin-google'></button>
-    </div>
+    <section class='section-entry'>
+      <img src=${LogoPeque} alt='logo-mochileiros' class='logo'>
+      <h2>Crear cuenta</h2>
+      <input type='text' placeholder='Usuario' class='inputs'>
+      <input type='email' placeholder='Correo electrónico' class='inputs'>
+      <input type='password' placeholder='Contraseña' class='inputs'>
+      <input type='password' placeholder='Confirma contraseña' class='inputs'>
+      <span class='error-message'style='display:none'></span>
+      <button id='signin'>Crear</button>
+      <div class='signin-google'>
+        <label for='signin-google'> Continuar con: </label>
+        <button id='signin-google'></button>
+      </div>
+    </section>
+    
     `;
 
   containerAccount.innerHTML = signInPage;
