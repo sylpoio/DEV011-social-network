@@ -1,8 +1,49 @@
 import { signOutFunction } from '../lib/auth';
-import { querySnapshot, paintRealTime } from '../lib/database';
+import { paintRealTime, createComment, paintRealTimeComment } from '../lib/database';
 import LogoPeque from '../images/LogoPeque.png';
+/* eslint-disable */
 
-function renderPostContainer(renderTextPost, renderDisplayName) {
+// Obtener un documento de post específico
+const postID = "postID_n"; // Reemplaza con el ID del post que estás visualizando
+const postRef = db.collection("posts").doc(postID);
+
+// Obtener la subcolección de comentarios para ese post
+postRef.collection("comentarios").get()
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            // Acceder a los comentarios aquí (doc.data())
+            console.log(doc.id, " => ", doc.data());
+            // Puedes mostrar los comentarios en tu interfaz de usuario aquí
+        });
+    })
+    .catch((error) => {
+        console.error("Error obteniendo comentarios: ", error);
+    });
+
+    // PENNY
+    if (id comment(post) !== id post) {
+      elemento.inner = ''
+    }
+
+
+function renderComment(renderTextComment, renderDisplayNameLogged, postId) {
+  const commentContainer = document.createElement('div');
+  commentContainer.classList.add('comment-container');
+  const commentContainerDiv = `
+  <h5 class="user-comment">${renderDisplayNameLogged}</h5>
+  <p class="text-comment">${renderTextComment}</p>
+  `;
+  const comments = document.querySelector(`#` + postId);
+  console.log('que eres', comments);
+  commentContainer.innerHTML = commentContainerDiv;
+  return comments.appendChild(commentContainer);
+}
+
+function renderPostContainer(
+  renderTextPost,
+  renderDisplayName,
+  postId,
+) {
   const postContainer = document.createElement('section');
   postContainer.classList.add('post-square');
   const postContainerPage = `
@@ -25,16 +66,36 @@ function renderPostContainer(renderTextPost, renderDisplayName) {
         <button id="like">✈️</button>
         <span id="like-counter">contador</span>
       </div>
-    <button id="comment">💬</button>
+    
     </div>
   </div>  
-  <div class="comment">
-    <h5 class="user-comment">Usuarix</h5>
-    <textarea class="text-comment" placeholder="deja tu comentario"></textarea>
+  <div class="create-comment">
+    <textarea class="create-text-comment" placeholder="Deja tu comentario"></textarea>
+    <button id="send-comment">➡</button>
   </div>
+  <section class="comment-section" id=${postId}></section>
   `;
+
   postContainer.innerHTML = postContainerPage;
+  // -----------------llamar al dom-------------------
   const posts = document.querySelector('.posts');
+  const createTextComment = postContainer.querySelector('.create-text-comment');
+  const sendComment = postContainer.querySelector('#send-comment');
+
+  sendComment.addEventListener('click', () => {
+    console.log('CLICK');
+    const textCommentValue = createTextComment.value;
+    createComment(textCommentValue, postId);
+  });
+  paintRealTimeComment((querySnapshotComment) => {
+    const sectionComment = postContainer.querySelector(`#` + postId);
+    sectionComment.textContent = '';
+    querySnapshotComment.forEach((doc) => {
+      const renderTextComment = doc.data().comment;
+      const renderDisplayNameLogged = doc.data().displayName;
+      renderComment(renderTextComment, renderDisplayNameLogged, postId);
+    });
+  });
   return posts.appendChild(postContainer);
 }
 
@@ -58,7 +119,6 @@ export const renderFeed = (navigateTo) => {
 
   // -----------------llamar al dom-------------------
   const sharePost = containerFeed.querySelector('.share-experience');
-
   // -----------------navigate to renderPost-----------
 
   sharePost.addEventListener('click', () => {
@@ -86,11 +146,12 @@ export const renderFeed = (navigateTo) => {
     const sectionPosts = containerFeed.querySelector('.posts');
     sectionPosts.textContent = '';
     querySnapshot.forEach((doc) => {
+      const postId = doc.id;
       console.log(doc.id);
       console.log(doc.data());
       const renderTextPost = doc.data().post;
       const renderDisplayName = doc.data().displayName;
-      renderPostContainer(renderTextPost, renderDisplayName);
+      renderPostContainer(renderTextPost, renderDisplayName, postId);
     });
   });
   return containerFeed;
