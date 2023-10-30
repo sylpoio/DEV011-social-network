@@ -5,13 +5,14 @@
 import { renderCreateAccount } from '../../src/components/create-account';
 
 jest.mock('../../src/lib/auth', () => ({
-  createAccountFunction: jest.fn((email, password) => {
-    if (email === 'mochilerxs@gmail.com' && password === '123456') {
+  createAccountFunction: jest.fn((email, password, username) => {
+    if (email === 'mochilerxs@gmail.com' && password === '123456' && username === 'viajeraprogre') {
       return Promise.resolve();
     }
     return Promise.reject();
   }),
   accountGoogle: jest.fn(() => Promise.resolve()),
+  googlePersistanceFunction: jest.fn(() => Promise.resolve()),
 }));
 
 describe('renderCreateAccount', () => {
@@ -28,9 +29,11 @@ describe('renderCreateAccount', () => {
     const DOM = document.createElement('div');
     const navigateToMock = jest.fn();
     DOM.append(renderCreateAccount(navigateToMock));
+    const username = DOM.querySelector("input[type='text']");
     const email = DOM.querySelector("input[type='email']");
     const password = DOM.querySelector("input[type='password']");
     const validatePassword = DOM.querySelector("input[placeholder='Confirma contraseña']");
+    username.value = 'viajeraprogre';
     email.value = 'mochilerxs@gmail.com';
     password.value = '123456';
     validatePassword.value = '123456';
@@ -41,7 +44,7 @@ describe('renderCreateAccount', () => {
       done();
     });
   });
-  it('cuando se hace click en el botón crear y no cumple los requerimientos para login, muestra los errores correspondientes', () => {
+  it('cuando se hace click en el botón crear y no cumple los requerimientos para signin, muestra los errores correspondientes', () => {
     const DOM = document.createElement('div');
     const navigateToMock = jest.fn();
     DOM.append(renderCreateAccount(navigateToMock));

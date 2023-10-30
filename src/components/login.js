@@ -1,8 +1,7 @@
 import {
-  loginFunction, accountGoogle, authPersistanceFunction,
-  googlePersistanceFunction,
+  loginFunction, accountGoogle, authPersistanceFunction, googlePersistanceFunction,
 } from '../lib/auth';
-import LogoinversoPeque from '../images/LogoinversoPeque.png';
+// import LogoinversoPeque from '../images/LogoinversoPeque.png';
 
 export const renderLogin = (navigateTo) => {
   const container = document.createElement('div');
@@ -12,7 +11,7 @@ export const renderLogin = (navigateTo) => {
   sectionContainer.classList.add('section-entry');
 
   const logo = document.createElement('img');
-  logo.setAttribute('src', LogoinversoPeque);
+  // logo.setAttribute('src', LogoinversoPeque);
   logo.setAttribute('alt', 'Logo mochileiros');
   logo.setAttribute('class', 'logo-invertido');
 
@@ -95,8 +94,8 @@ export const renderLogin = (navigateTo) => {
     console.log(email, password);
     loginFunction(email, password)
       .then(() => {
-        authPersistanceFunction();
         navigateTo('/feed');
+        authPersistanceFunction();
       })
       .catch((errorCode) => {
         errorSpan.style.display = 'block';
@@ -114,8 +113,8 @@ export const renderLogin = (navigateTo) => {
   btnLoginGoogle.addEventListener('click', () => {
     accountGoogle()
       .then(() => {
-        googlePersistanceFunction();
         navigateTo('/feed');
+        googlePersistanceFunction();
       });
   });
 

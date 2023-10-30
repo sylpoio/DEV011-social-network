@@ -1,15 +1,15 @@
 import {
   createAccountFunction,
-  accountGoogle, googlePersistanceFunction, authPersistanceFunction,
+  accountGoogle, authPersistanceFunction, googlePersistanceFunction,
 } from '../lib/auth';
-import LogoPeque from '../images/LogoPeque.png';
+// import LogoPeque from '../images/LogoPeque.png';
 
 export const renderCreateAccount = (navigateTo) => {
   const containerAccount = document.createElement('div');
   containerAccount.classList.add('create-acount-page');
   const signInPage = `
     <section class='section-entry'>
-      <img src=${LogoPeque} alt='logo-mochileiros' class='logo'>
+      <img  alt='logo-mochileiros' class='logo'>
       <h2>Crear cuenta</h2>
       <input type='text' placeholder='Usuario' class='inputs'>
       <input type='email' placeholder='Correo electrónico' class='inputs'>
@@ -48,8 +48,8 @@ export const renderCreateAccount = (navigateTo) => {
     } else {
       createAccountFunction(email, password, username)
         .then(() => {
-          authPersistanceFunction();
           navigateTo('/feed');
+          authPersistanceFunction();
         })
         .catch((errorCode) => {
           errorMessage.style.display = 'block';
@@ -69,8 +69,8 @@ export const renderCreateAccount = (navigateTo) => {
   btnGoogle.addEventListener('click', () => {
     accountGoogle()
       .then(() => {
-        googlePersistanceFunction();
         navigateTo('/feed');
+        googlePersistanceFunction();
       });
   });
   return containerAccount;

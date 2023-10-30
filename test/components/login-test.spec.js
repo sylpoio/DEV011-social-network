@@ -13,6 +13,7 @@ jest.mock('../../src/lib/auth', () => ({
     return Promise.reject();
   }),
   accountGoogle: jest.fn(() => Promise.resolve()),
+  googlePersistanceFunction: jest.fn(() => Promise.resolve()),
 }));
 
 describe('renderLogin', () => {
@@ -65,12 +66,15 @@ describe('renderLogin', () => {
       expect(errorSpan).toBe('Datos incorrectos, revisa tu correo y contraseña');
     }
   });
-  it('cuando se hace click en el botón de google nos lleva a la url de feed', () => {
+  it('cuando se hace click en el botón de google nos lleva a la url de feed', (done) => {
     const DOM = document.createElement('div');
     const navigateToMock = jest.fn();
     DOM.append(renderLogin(navigateToMock));
     const createAccountButton = DOM.querySelector('#login-google');
     createAccountButton.click();
-    expect(navigateToMock).toHaveBeenLastCalledWith('/feed');
+    setTimeout(() => {
+      expect(navigateToMock).toHaveBeenLastCalledWith('/feed');
+      done();
+    });
   });
 });
