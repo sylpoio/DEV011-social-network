@@ -1,9 +1,11 @@
 import { signOutFunction } from '../lib/auth';
-import { paintRealTime, createComment, paintRealTimeComment } from '../lib/database';
+import {
+  paintRealTime, createComment, paintRealTimeComment, deletePost,
+} from '../lib/database';
 import LogoPeque from '../images/LogoPeque.png';
 /* eslint-disable */
 
-// Obtener un documento de post específico
+/* // Obtener un documento de post específico
 const postID = "postID_n"; // Reemplaza con el ID del post que estás visualizando
 const postRef = db.collection("posts").doc(postID);
 
@@ -20,10 +22,7 @@ postRef.collection("comentarios").get()
         console.error("Error obteniendo comentarios: ", error);
     });
 
-    // PENNY
-    if (id comment(post) !== id post) {
-      elemento.inner = ''
-    }
+ */
 
 
 function renderComment(renderTextComment, renderDisplayNameLogged, postId) {
@@ -81,6 +80,9 @@ function renderPostContainer(
   const posts = document.querySelector('.posts');
   const createTextComment = postContainer.querySelector('.create-text-comment');
   const sendComment = postContainer.querySelector('#send-comment');
+  const deleteButton = postContainer.querySelector('#delete');
+
+  deleteButton.addEventListener('click', () => deletePost)
 
   sendComment.addEventListener('click', () => {
     console.log('CLICK');

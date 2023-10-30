@@ -1,5 +1,7 @@
 import {
   db, addDoc, collection, getDocs, onSnapshot, query, orderBy,
+  doc,
+  deleteDoc,
 } from './firebase.js';
 
 // Create a new post reference with an auto-generated id
@@ -24,6 +26,7 @@ export const createComment = (comment, postId) => {
   });
 };
 
+export const deletePost = deleteDoc(doc(db, 'posts', 'id'));
 export const querySnapshot = getDocs(postCollection);
 export const querySnapshotComment = getDocs(commentCollection);
 
