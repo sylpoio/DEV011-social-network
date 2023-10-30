@@ -1,10 +1,13 @@
+import { createPost } from '../lib/database.js';
+
 export const renderPost = (navigateTo) => {
   const containerPost = document.createElement('div');
   containerPost.classList.add('post-page');
+  const currentUser = sessionStorage.getItem('usuarioLogeado');
   const postPage = `
     <section class= 'post-container'>
       <div class='user-container'>
-        <h5>Usuario</h5>
+        <h5>${currentUser}</h5>
         <button id="close">✖</button>
       </div>
       <label for="inputPost" ></label>
@@ -19,7 +22,6 @@ export const renderPost = (navigateTo) => {
   const textPost = containerPost.querySelector('#textPost');
   const uploadPictureBtn = containerPost.querySelector('#uploadPicture');
   const publishBtn = containerPost.querySelector('#publish');
-
   // -----------DOM calls-------------------
 
   textPost.addEventListener('keyup', () => {
@@ -36,6 +38,9 @@ export const renderPost = (navigateTo) => {
   });
 
   publishBtn.addEventListener('click', () => {
+    const textPostValue = textPost.value;
+    createPost(textPostValue);
+    navigateTo('/feed');
     console.log('click');
   });
 

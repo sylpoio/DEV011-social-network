@@ -2,8 +2,20 @@ body {
   overflow-x: hidden;
   margin: 0;
 }
+button {
+  cursor: pointer;
+}
+.section-entry {
+  width: 90%;
+  height: 80vh;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .login-page {
-  background-image: url(../src/images/Fondo-login.png);
+  background-image: url(/images/Fondo-login.png);
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
@@ -13,7 +25,6 @@ body {
   text-align: center;
   align-items: center;
   gap: 20px;
-  
 }
 .logo-invertido {
   width: 20vh;
@@ -27,9 +38,9 @@ h1 {
   text-shadow: 0px 4px 4px #107b8c;
 }
 .inputs {
-  border-radius: 30px;
-  border: 1px solid #032838;
-  background: #107b8c;
+  border-radius: 10px;
+  border: 2px solid #86a8af;
+  background: #5d99a2;
   width: 90%;
   height: 5%;
   flex-shrink: 0;
@@ -42,7 +53,8 @@ h1 {
   padding: 5%;
   font-size: 1rem;
 }
-#login, #signin {
+#login,
+#signin {
   width: 50%;
   height: 4%;
   flex-shrink: 0;
@@ -72,14 +84,15 @@ h1 {
   gap: 5px;
 }
 
-label[for='signin-google'] {
-color: #107b8c;
-background-color: #d9d9d9;
-padding: 0 5px;
-border-radius: 10px;
+label[for="signin-google"] {
+  color: #107b8c;
+  background-color: #d9d9d9;
+  padding: 0 5px;
+  border-radius: 10px;
 }
 
-#signin-google, #login-google {
+#signin-google,
+#login-google {
   background-image: url(../src/images/ícono-google.png);
   width: 5vh;
   height: 5vh;
@@ -90,7 +103,7 @@ border-radius: 10px;
 }
 
 .create-acount-page {
-  background-image: url(../src/images/Fondo-cuenta.png);
+  background-image: url(/images/Fondo-cuenta.png);
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
@@ -116,39 +129,42 @@ h2 {
   font-weight: 400;
   line-height: normal;
 }
+.error {
+  color: rgb(151, 3, 3);
+  text-shadow: none;
+  padding: 5%;
+  font-size: 3rem;
+}
 
-.error-message, .span-login {
+.error-message,
+.span-login {
   color: white;
   background-color: darkred;
-  padding: .5%;
+  padding: 0.5%;
   border-radius: 5px;
 }
 
 .feed {
-  background-image: url(../images/fondo-muro.png);
+  background-image: url(/images/fondo-muro.png);
   display: flex;
   width: 100%;
+  height: 100vh;
   flex-direction: column;
   gap: 20px;
   padding: 15px 0 0 0;
   align-items: center;
-  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 header {
   display: flex;
   align-items: center;
-  width: 82%;
+  width: 90%;
   height: 8vh;
   justify-content: space-between;
   text-align: right;
-}
-
-.share-experience {
-  width: 82%;
-  height: 10%;
-  border-radius: 20px;
-  background-color: #E5D9CD;
+  margin-top: 30px;
 }
 
 .little-logo {
@@ -158,13 +174,14 @@ header {
 
 h3 {
   font-family: "Jomhuria", cursive;
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin: 0;
   text-align: center;
   text-shadow: 0px 4px 4px rgb(238, 242, 242);
-
 }
-
+.user-info {
+  width: 38%;
+}
 h4 {
   margin: 0;
   flex-shrink: 0;
@@ -175,16 +192,29 @@ h4 {
   text-align: center;
   font-size: 1rem;
   padding: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
 
 #signout {
   border-radius: 30px;
-  border: 1px solid #119CB1;
-  background: #86A8AF;
+  border: 1px solid #119cb1;
+  background: #86a8af;
   width: 70%;
   height: 5%;
-  color: #FFF;
+  color: #fff;
   text-align: center;
+}
+
+.share-experience {
+  width: 82%;
+
+  border-radius: 20px;
+  background-color: #e5d9cd;
+  padding: 5px;
+  font-size: 1rem;
 }
 
 .posts {
@@ -192,27 +222,44 @@ h4 {
   flex-direction: column;
   gap: 10px;
   align-items: center;
-  width: 100%
+  width: 100%;
 }
 
 .post-square {
   height: 50%;
   width: 80%;
   display: flex;
-  background: #2DA6B9;
+  background: #2da6b9;
   flex-direction: column;
   gap: 10px;
   padding: 15px;
   border-radius: 10px;
-  border: solid #032838;
 }
+
 .post {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  border-bottom: solid;
 }
 
 .header-post {
+  display: flex;
+  justify-content: space-between;
+}
+
+.image {
+  height: 50%;
+  width: 100%;
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.interactions {
   display: flex;
   justify-content: space-between;
 }
@@ -224,11 +271,13 @@ h5 {
   padding: 5px;
   font-family: serif;
   font-size: 150%;
+  text-decoration: underline;
 }
 
-#edit {
+#edit,
+#delete {
   border-radius: 50px;
-  background-color: #E5D9CD;
+  background-color: #e5d9cd;
   width: 30px;
   height: 30px;
 }
@@ -240,26 +289,22 @@ h5 {
 }
 
 .text-comment {
-width: 100%;
-height: 60%;
-border-radius: 5px;
-background-color: #E5D9CD;
-}
-
-.image {
- height: 90%;
- width: 100%;
- /* border: solid; */
-}
-
-.image img {
   width: 100%;
-  height: 100%; 
-  object-fit: contain;
+  height: 60%;
+  border-radius: 5px;
+  background-color: #e5d9cd;
+}
+
+#like, #comment {
+  background: transparent;
+  border: none;
+  width: 30px;
+  height: 30px;
+  font-size: 1.2rem;
 }
 
 .post-page {
-  background-image: url(../images/fondo-muro.png);
+  background-image: url(/images/fondo-muro.png);
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -318,7 +363,7 @@ background-color: #E5D9CD;
   border-radius: 50%;
   padding: 30px;
   background-color: #2DA6B9;
-  background-image: url(../images/camera.png);
+  background-image: url(/images/camera.png);
   background-repeat: no-repeat;
   background-size: contain;
   border: #E5D9CD solid;
@@ -337,4 +382,29 @@ background-color: #E5D9CD;
   text-align: center;
   font-size: 1rem;
   margin-top: 10px;
+}
+
+@media only screen and (min-width: 900px) {
+  .image {
+    width: 800px;
+  }
+}
+
+@media (min-width: 764px) {
+  .section-entry {
+    width: 50%;
+  }
+  .user-info {
+    width: 30%;
+  }
+  h3 {
+    font-size: 6.5rem;
+  }
+  .little-logo {
+    width: 20vh;
+    height: 14vh;
+  }
+  .share-experience {
+    margin-top: 16px;
+  }
 }

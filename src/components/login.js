@@ -1,11 +1,18 @@
-import { loginFunction, accountGoogle } from '../lib/auth';
+import {
+  loginFunction, accountGoogle, authPersistanceFunction,
+  googlePersistanceFunction,
+} from '../lib/auth';
+import LogoinversoPeque from '../images/LogoinversoPeque.png';
 
 export const renderLogin = (navigateTo) => {
   const container = document.createElement('div');
   container.classList.add('login-page');
 
+  const sectionContainer = document.createElement('section');
+  sectionContainer.classList.add('section-entry');
+
   const logo = document.createElement('img');
-  logo.setAttribute('src', './images/LogoinversoPeque.png');
+  logo.setAttribute('src', LogoinversoPeque);
   logo.setAttribute('alt', 'Logo mochileiros');
   logo.setAttribute('class', 'logo-invertido');
 
@@ -53,18 +60,21 @@ export const renderLogin = (navigateTo) => {
   btnGoogle.setAttribute('id', 'login-google');
 
   divGoogle.append(googleLabel, btnGoogle);
-  container.appendChild(logo);
-  container.appendChild(h1);
-  container.appendChild(labelUsername);
-  container.appendChild(labelPassword);
-  container.appendChild(inputUsername);
-  container.appendChild(inputPassword);
-  container.appendChild(span);
-  container.appendChild(btnLogin);
-  container.appendChild(btnCreateAccount);
-  container.appendChild(divGoogle);
+  sectionContainer.append(
+    logo,
+    h1,
+    labelUsername,
+    labelPassword,
+    inputUsername,
+    inputPassword,
+    span,
+    btnLogin,
+    btnCreateAccount,
+    divGoogle,
+  );
+  container.appendChild(sectionContainer);
 
-  // ---------------------------------addEventListeners-----------------------------------
+  // ---------------------------------DOM calls-----------------------------------
   const buttonLogin = container.querySelector('#login');
   const btnLoginGoogle = container.querySelector('#login-google');
   const inputLoginEmail = container.querySelector('#inputUsername');
@@ -72,11 +82,12 @@ export const renderLogin = (navigateTo) => {
   const buttnCreateAccount = container.querySelector('#account');
   const errorSpan = container.querySelector('.span-login');
 
+  // ---------------------------------addEventListeners---------------------------------
+
   buttnCreateAccount.addEventListener('click', () => {
     navigateTo('/signin');
   });
 
-  // ---------------------------------Login functions---------------------------------
   // Login email and password
   buttonLogin.addEventListener('click', () => {
     const email = inputLoginEmail.value;
@@ -84,7 +95,7 @@ export const renderLogin = (navigateTo) => {
     console.log(email, password);
     loginFunction(email, password)
       .then(() => {
-        console.log('then');
+        authPersistanceFunction();
         navigateTo('/feed');
       })
       .catch((errorCode) => {
@@ -101,8 +112,11 @@ export const renderLogin = (navigateTo) => {
 
   // Login with Google
   btnLoginGoogle.addEventListener('click', () => {
-    accountGoogle();
-    navigateTo('/feed');
+    accountGoogle()
+      .then(() => {
+        googlePersistanceFunction();
+        navigateTo('/feed');
+      });
   });
 
   return container;

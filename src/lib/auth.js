@@ -1,6 +1,7 @@
 import {
   getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
-  GoogleAuthProvider, signInWithPopup, signOut,
+  GoogleAuthProvider, signInWithPopup, signOut, setPersistence,
+  browserSessionPersistence, updateProfile,
 } from 'firebase/auth';
 /* import { doc, setDoc } from 'firebase/firestore';  */
 
@@ -8,10 +9,21 @@ const auth = getAuth();
 
 // ---------------------------------Create Account Function-----------------------------------
 
-export const createAccountFunction = (email, password) => new Promise((resolve, reject) => {
+export const createAccountFunction = (
+  email,
+  password,
+  username,
+) => new Promise((resolve, reject) => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
+      updateProfile(auth.currentUser, {
+        displayName: username,
+      }).then(() => {
+        console.log('AUTH USER', auth.currentUser);
+      }).catch((error) => {
+        console.log(error);
+      });
       resolve();
       console.log('Usuario creado con éxito:', user);
     })
@@ -71,33 +83,38 @@ export const loginFunction = (email, password) => new Promise((resolve, reject) 
 export const signOutFunction = () => {
   signOut(auth);
 };
+// ---------------------------------Persistence Function-----------------------------------
+export const authPersistanceFunction = (email, password) => new Promise((resolve, reject) => {
+  setPersistence(auth, browserSessionPersistence)
+    .then(() => {
+      resolve(loginFunction(email, password));
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      reject(errorCode);
+      console.log(errorMessage);
+    });
+});
 
-//   //---------------------------------Redirect Feed Function-----------------------------------
-//   getRedirectResult(auth)
-// .then((result) => {
-//   // This gives you a Google Access Token. You can use it to access Google APIs.
-//   const credential = GoogleAuthProvider.credentialFromResult(result);
-//   const token = credential.accessToken;
+export const googlePersistanceFunction = () => new Promise((resolve, reject) => {
+  setPersistence(auth, browserSessionPersistence)
+    .then(() => {
+      console.log('google persist');
+      resolve(accountGoogle());
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      reject(errorCode);
+      console.log(errorMessage);
+    });
+});
 
-//   // The signed-in user info.
-//   const user = result.user;
-//   // IdP data available using getAdditionalUserInfo(result)
-//   // ...
-// }).catch((error) => {
-//   // Handle Errors here.
-//   const errorCode = error.code;
-//   const errorMessage = error.message;
-//   // The email of the user's account used.
-//   const email = error.customData.email;
-//   // The AuthCredential type that was used.
-//   const credential = GoogleAuthProvider.credentialFromError(error);
-//   // ...
-// });
-
-// //---------------------------------Login Google Function-----------------------------------
-
-// btnGoogle.addEventListener('click', () => {
-//   const provider = new GoogleAuthProvider();
-//   signInWithRedirect(auth, provider);
-//   console.log('GOOGLE LOGIN');
-// });
+export const stateChanged = auth.onAuthStateChanged((user) => {
+  if (user) {
+    const displayedName = user.displayName;
+    console.log('por aquí usuario', displayedName);
+    sessionStorage.setItem('usuarioLogeado', displayedName);
+  }
+});
