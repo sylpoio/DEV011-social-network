@@ -1,6 +1,6 @@
 /**
- * @jest-environment jsdom
- */
+* @jest-environment jsdom
+*/
 
 import { renderLogin } from '../../src/components/login';
 // import { navigateTo } from '../../src/main'
