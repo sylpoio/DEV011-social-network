@@ -1,8 +1,8 @@
 import { signOutFunction } from '../lib/auth';
-import { querySnapshot, paintRealTime } from '../lib/database';
+import { querySnapshot, paintRealTime, postReferenceLike } from '../lib/database';
 import LogoPeque from '../images/LogoPeque.png';
 
-function renderPostContainer(renderTextPost, renderDisplayName) {
+function renderPostContainer(renderTextPost, renderDisplayName, postId, dataLikes) {
   const postContainer = document.createElement('section');
   postContainer.classList.add('post-square');
   const postContainerPage = `
@@ -35,6 +35,11 @@ function renderPostContainer(renderTextPost, renderDisplayName) {
   `;
   postContainer.innerHTML = postContainerPage;
   const posts = document.querySelector('.posts');
+  const like = postContainer.querySelector('#like');
+  like.addEventListener ('click', () => {
+    postReferenceLike(postId, dataLikes);
+    console.log('clcik del like', postId);
+  });
   return posts.appendChild(postContainer);
 }
 
@@ -86,11 +91,14 @@ export const renderFeed = (navigateTo) => {
     const sectionPosts = containerFeed.querySelector('.posts');
     sectionPosts.textContent = '';
     querySnapshot.forEach((doc) => {
-      console.log(doc.id);
+      // console.log('Este es el id', doc.id);
       console.log(doc.data());
       const renderTextPost = doc.data().post;
       const renderDisplayName = doc.data().displayName;
-      renderPostContainer(renderTextPost, renderDisplayName);
+      const dataLikes = doc.data().likes;
+      const postId = doc.id;
+    console.log('esto es postid', dataLikes);
+      renderPostContainer(renderTextPost, renderDisplayName, postId, dataLikes);
     });
   });
   return containerFeed;
