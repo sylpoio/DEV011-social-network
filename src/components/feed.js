@@ -23,7 +23,7 @@ function renderPostContainer(renderTextPost, renderDisplayName, postId, dataLike
     <div class = "interactions">
       <div class= "reactions">
         <button id="like">✈️</button>
-        <span id="like-counter">contador</span>
+        <span id="like-counter">${dataLikes.length}</span>
       </div>
     <button id="comment">💬</button>
     </div>
@@ -36,9 +36,11 @@ function renderPostContainer(renderTextPost, renderDisplayName, postId, dataLike
   postContainer.innerHTML = postContainerPage;
   const posts = document.querySelector('.posts');
   const like = postContainer.querySelector('#like');
-  like.addEventListener('click', () => {
-    postReferenceLike(postId, dataLikes);
-    console.log('click del like', dataLikes.length);
+  const spanCounter = postContainer.querySelector('#like-counter')
+
+  like.addEventListener('click', async () => {
+    dataLikes = await postReferenceLike(postId, dataLikes);
+    spanCounter.textContent = dataLikes.length;
   });
   return posts.appendChild(postContainer);
 }
@@ -79,25 +81,14 @@ export const renderFeed = (navigateTo) => {
     navigateTo('/');
   });
 
-  // querySnapshot.then((docs) => {
-  //   docs.forEach((doc) => {
-  //     console.log(doc.id);
-  //     console.log(doc.data());
-  //     const renderTextPost = doc.data().post;
-  //     renderPostContainer(renderTextPost);
-  //   });
-
   paintRealTime((querySnapshot) => {
     const sectionPosts = containerFeed.querySelector('.posts');
     sectionPosts.textContent = '';
     querySnapshot.forEach((doc) => {
-      // console.log('Este es el id', doc.id);
-      console.log(doc.data());
       const renderTextPost = doc.data().post;
       const renderDisplayName = doc.data().displayName;
       const dataLikes = doc.data().likes;
       const postId = doc.id;
-      console.log('esto es postid', dataLikes);
       renderPostContainer(renderTextPost, renderDisplayName, postId, dataLikes);
     });
   });
