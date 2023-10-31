@@ -1,5 +1,5 @@
 import { signOutFunction } from '../lib/auth';
-import { querySnapshot, paintRealTime, postReferenceLike } from '../lib/database';
+import { paintRealTime, postReferenceLike } from '../lib/database';
 import LogoPeque from '../images/LogoPeque.png';
 
 function renderPostContainer(renderTextPost, renderDisplayName, postId, dataLikes) {
@@ -36,9 +36,9 @@ function renderPostContainer(renderTextPost, renderDisplayName, postId, dataLike
   postContainer.innerHTML = postContainerPage;
   const posts = document.querySelector('.posts');
   const like = postContainer.querySelector('#like');
-  like.addEventListener ('click', () => {
+  like.addEventListener('click', () => {
     postReferenceLike(postId, dataLikes);
-    console.log('clcik del like', postId);
+    console.log('click del like', dataLikes.length);
   });
   return posts.appendChild(postContainer);
 }
@@ -97,7 +97,7 @@ export const renderFeed = (navigateTo) => {
       const renderDisplayName = doc.data().displayName;
       const dataLikes = doc.data().likes;
       const postId = doc.id;
-    console.log('esto es postid', dataLikes);
+      console.log('esto es postid', dataLikes);
       renderPostContainer(renderTextPost, renderDisplayName, postId, dataLikes);
     });
   });
