@@ -9,49 +9,49 @@ function renderPostContainer(renderTextPost, renderDisplayName, postId, dataLike
   postContainer.classList.add('post-square');
   const postContainerPage = `
     <div class = "post"> 
-    <div class = "header-post"> 
-    <h5>${renderDisplayName}</h5>
-    <div>
-    <button id="edit">🖋</button>
-    <button id="delete">🗑</button>
-    <div id='pop-up' class='overlay' style='display:none;'>
-    <div id='body-pop-up'>
-    <p class='confirm-message-delete'>¿Segurx que quieres eliminar este post?</p>
-    <div class='buttons'>
-    <button class='accept-button'>Sí</button>
-    <button class='reject-button'>No</button>
-    </div>
-    </div>
+      <div class = "header-post"> 
+        <h5>${renderDisplayName}</h5>
+        <div>
+          <button id="edit">🖋</button>
+          <button id="delete">🗑</button>
+          <div id='pop-up' class='overlay' style='display:none;'>
+            <div id='body-pop-up'>
+              <p class='confirm-message-delete'>¿Segurx que quieres eliminar este post?</p>
+              <div class='buttons'>
+                <button class='accept-button'>Sí</button>
+                <button class='reject-button'>No</button>
+              </div>
+            </div>
+          </div>
+          <div id='edit-pop-up' class='overlay' style='display:none;'>
+            <div id='body-edit-pop-up'>
+              <textarea class='edit-input'>${renderTextPost}</textarea>
+              <div class='edit-buttons'>
+                <button class='edit-accept-button'>Publicar</button>
+                <button class='edit-reject-button'>Cancelar</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div id='edit-pop-up' class='overlay' style='display:none;'>
-          <div id='body-edit-pop-up'>
-            <textarea class='edit-input'>${renderTextPost}</textarea>
-            <div class='edit-buttons'>
-            <button class='edit-accept-button'>Publicar</button>
-            <button class='edit-reject-button'>Cancelar</button>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            <div class="container-text-post">
-            <p class="render-text-post">${renderTextPost}</p>
-            </div>
-            <picture class = "image">
-            <img src="./images/imagen-muestra-post.png" alt="foto-post" class="foto-post" />
-            </picture>
-            <div class = "interactions">
-            <div class= "reactions">
-            <button id="like">✈️</button>
-            <span id="like-counter">${dataLikes.length}</span>
-            </div>
-            <button id="comment">💬</button>
-            </div>
-            </div>  
-            <div class="comment">
-            <h5 class="user-comment">Usuarix</h5>
-            <textarea class="text-comment" placeholder="deja tu comentario"></textarea>
-            </div>
+      </div>
+      <div class="container-text-post">
+        <p class="render-text-post">${renderTextPost}</p>
+      </div>
+      <picture class = "image">
+        <img src="./images/imagen-muestra-post.png" alt="foto-post" class="foto-post" />
+      </picture>
+      <div class = "interactions">
+        <div class= "reactions">
+          <button id="like">✈️</button>
+          <span id="like-counter">${dataLikes.length}</span>
+        </div>
+      </div>  
+        <div class="comment">
+        <h5 class="user-comment">Usuarix</h5>
+        <textarea class="text-comment" placeholder="deja tu comentario"></textarea>
+        <button id="comment">💬</button>
+      </div>
+  </div>
             `;
   postContainer.innerHTML = postContainerPage;
   const posts = document.querySelector('.posts');

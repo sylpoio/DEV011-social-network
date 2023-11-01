@@ -54,7 +54,11 @@ h1 {
   font-size: 1rem;
 }
 #login,
-#signin {
+#signin, 
+.accept-button,
+.reject-button, 
+.edit-accept-button,
+ .edit-reject-button{
   width: 50%;
   height: 4%;
   flex-shrink: 0;
@@ -210,7 +214,6 @@ h4 {
 
 .share-experience {
   width: 82%;
-
   border-radius: 20px;
   background-color: #e5d9cd;
   padding: 5px;
@@ -240,7 +243,7 @@ h4 {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  border-bottom: solid;
+  
 }
 
 .header-post {
@@ -262,6 +265,7 @@ h4 {
 .interactions {
   display: flex;
   justify-content: space-between;
+  border-bottom: 2px solid;
 }
 
 h5 {
@@ -282,13 +286,54 @@ h5 {
   height: 30px;
 }
 
+/*Pop up format*/
+.overlay { 
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: visible;
+  opacity: 1;
+}
+
+#body-pop-up,
+#body-edit-pop-up {
+  width:40%;
+  padding:4%;
+  border-radius: 30px;
+  box-shadow: 0 0 5px #032838;
+  background:  #5d99a2;
+  position: relative;
+  margin: 20% auto;
+}
+
+.buttons, 
+.edit-buttons {
+ display:flex;
+ gap: 5px;
+}
+
+.confirm-message-delete {
+  color: #d9d9d9;
+  font-size: 1.3rem;
+}
+
+#body-edit-pop-up {
+  width: 60%;
+  height: 15%;
+}
+
 .user-comment {
   font-size: 1rem;
   color: #1b1a1a;
   font-family: serif;
 }
 
-.text-comment {
+.text-comment, 
+.edit-input {
   width: 100%;
   height: 60%;
   border-radius: 5px;
