@@ -66,7 +66,6 @@ function renderPostContainer(renderTextPost, renderDisplayName, postId, dataLike
   const acceptEditButton = postContainer.querySelector('.edit-accept-button');
   const rejectEditButton = postContainer.querySelector('.edit-reject-button');
   const textEdit = postContainer.querySelector('.edit-input');
-  
 
   like.addEventListener('click', async () => {
     dataLikes = await postReferenceLike(postId, dataLikes);
