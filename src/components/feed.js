@@ -5,9 +5,10 @@ import {
 } from '../lib/database';
 // import { LogoPeque } from '../images/LogoPeque.png';
 
-function renderPostContainer(renderTextPost, renderDisplayName, postId, dataLikes) {
+export const renderPostContainer = (renderTextPost, renderDisplayName, postId, dataLikes) => {
   const postContainer = document.createElement('section');
   postContainer.classList.add('post-square');
+  const likeCounter = dataLikes.length;
   const postContainerPage = `
     <div class = "post"> 
     <div class = "header-post"> 
@@ -44,7 +45,7 @@ function renderPostContainer(renderTextPost, renderDisplayName, postId, dataLike
             <div class = "interactions">
             <div class= "reactions">
             <button id="like">✈️</button>
-            <span id="like-counter">${dataLikes.length}</span>
+            <span id="like-counter">${likeCounter}</span>
             </div>
             <button id="comment">💬</button>
             </div>

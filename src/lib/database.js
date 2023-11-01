@@ -33,6 +33,7 @@ export const postReferenceLike = async (postId, dataLikes) => {
   console.log('este es después de agregar el like', dataLikes);
   return dataLikes;
 };
+
 export const editPostFunction = async (postId, textEditValue, renderTextPost) => {
   const editPost = doc(db, 'posts', postId);
   await updateDoc(editPost, {
@@ -40,6 +41,7 @@ export const editPostFunction = async (postId, textEditValue, renderTextPost) =>
   });
   return renderTextPost;
 };
+
 export const querySnapshot = getDocs(postCollection);
 
 const q = query(postCollection, orderBy('date', 'desc'));
