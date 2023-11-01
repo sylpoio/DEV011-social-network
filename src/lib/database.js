@@ -1,6 +1,7 @@
+import { async } from 'regenerator-runtime';
 import {
   db, addDoc, collection, getDocs, onSnapshot,
-  query, orderBy, doc, updateDoc, arrayUnion, arrayRemove,
+  query, orderBy, doc, updateDoc, arrayUnion, arrayRemove, deleteDoc,
 } from './firebase.js';
 
 const postCollection = collection(db, 'posts');
@@ -39,3 +40,7 @@ export const querySnapshot = getDocs(postCollection);
 const q = query(postCollection, orderBy('date', 'desc'));
 
 export const paintRealTime = (callback) => onSnapshot(q, callback);
+
+export const deletePostFunction = async (postId) => {
+  await deleteDoc(doc(db, 'posts', postId));
+};

@@ -1,5 +1,5 @@
 import { signOutFunction } from '../lib/auth';
-import { paintRealTime, postReferenceLike } from '../lib/database';
+import { paintRealTime, postReferenceLike, deletePostFunction } from '../lib/database';
 import LogoPeque from '../images/LogoPeque.png';
 
 function renderPostContainer(renderTextPost, renderDisplayName, postId, dataLikes) {
@@ -12,6 +12,15 @@ function renderPostContainer(renderTextPost, renderDisplayName, postId, dataLike
       <div>
         <button id="edit">🖋</button>
         <button id="delete">🗑</button>
+        <div id='pop-up' class='overlay' style='display:none;'>
+          <div id='body-pop-up'>
+            <p class='confirm-message-delete'>¿Segurx que quieres eliminar este post?</p>
+            <div class='buttons'>
+              <button class='accept-button'>Sí</button>
+              <button class='reject-button'>No</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="container-text-post">
@@ -36,11 +45,24 @@ function renderPostContainer(renderTextPost, renderDisplayName, postId, dataLike
   postContainer.innerHTML = postContainerPage;
   const posts = document.querySelector('.posts');
   const like = postContainer.querySelector('#like');
-  const spanCounter = postContainer.querySelector('#like-counter')
+  const spanCounter = postContainer.querySelector('#like-counter');
+  const deletePostButton = postContainer.querySelector('#delete');
+  const acceptButton = postContainer.querySelector('.accept-button');
+  const rejectButton = postContainer.querySelector('.reject-button');
+  const popupContainer = postContainer.querySelector('#pop-up');
 
   like.addEventListener('click', async () => {
     dataLikes = await postReferenceLike(postId, dataLikes);
     spanCounter.textContent = dataLikes.length;
+  });
+  deletePostButton.addEventListener('click', () => {
+    popupContainer.style.display = 'block';
+    acceptButton.addEventListener('click', async () => {
+      await deletePostFunction(postId);
+    });
+    rejectButton.addEventListener('click', () => {
+      popupContainer.style.display = 'none';
+    });
   });
   return posts.appendChild(postContainer);
 }
