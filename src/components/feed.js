@@ -3,9 +3,9 @@ import { signOutFunction } from '../lib/auth';
 import {
   paintRealTime, postReferenceLike, deletePostFunction, editPostFunction,
 } from '../lib/database';
-// import { LogoPeque } from '../images/LogoPeque.png';
+// import LogoPeque from '../images/LogoPeque.png';
 
-export const renderPostContainer = (renderTextPost, renderDisplayName, postId, dataLikes) => {
+export const renderPostContainer = (renderTextPost, renderDisplayName, postId, dataLikes = []) => {
   const postContainer = document.createElement('section');
   postContainer.classList.add('post-square');
   const likeCounter = dataLikes.length;
@@ -93,7 +93,8 @@ export const renderPostContainer = (renderTextPost, renderDisplayName, postId, d
       popupEditContainer.style.display = 'none';
     });
   });
-  return posts.appendChild(postContainer);
+  console.log('este es posts', posts)
+  return posts && posts.appendChild(postContainer);
 }
 
 export const renderFeed = (navigateTo) => {

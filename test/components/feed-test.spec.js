@@ -50,22 +50,23 @@ describe('renderPostContainer', () => {
   });
   it('tiene un botón para editar', () => {
     const DOM = document.createElement('div');
-    DOM.append(renderPostContainer());
+    const posts = DOM.querySelector('.posts');
+    DOM.append(renderFeed().append(renderPostContainer(posts)));
     const haveEditButton = DOM.querySelector('#edit');
     expect(haveEditButton).not.toBe(undefined);
   });
-  // it('tiene un botón para eliminar', () => {
-  //   const DOM = document.createElement('div');
-  //   DOM.append(renderPostContainer());
-  //   const haveSignOutButton = DOM.querySelector('#signout');
-  //   expect(haveSignOutButton).not.toBe(undefined);
-  // });
-  // it('tiene un botón para dar like', () => {
-  //   const DOM = document.createElement('div');
-  //   const navigateToMock = jest.fn();
-  //   DOM.append(renderPostContainer(navigateToMock));
-  //   const postButton = DOM.querySelector('.share-experience');
-  //   postButton.click();
-  //   expect(navigateToMock).toHaveBeenLastCalledWith('/post');
-  // });
+  it('tiene un botón para eliminar', () => {
+    const DOM = document.createElement('div');
+    const posts = DOM.querySelector('.posts');
+    DOM.append(renderFeed().append(renderPostContainer(posts)));
+    const haveDeleteButton = DOM.querySelector('#delete');
+    expect(haveDeleteButton).not.toBe(undefined);
+  });
+  it('tiene un botón para dar like', () => {
+    const DOM = document.createElement('div');
+    const posts = DOM.querySelector('.posts');
+    DOM.append(renderFeed().append(renderPostContainer(posts)));
+    const haveLikeButton = DOM.querySelector('#like');
+    expect(haveLikeButton).not.toBe(undefined);
+  });
 });
