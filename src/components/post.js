@@ -20,7 +20,7 @@ export const renderPost = (navigateTo) => {
 
   const closeBtn = containerPost.querySelector('#close');
   const textPost = containerPost.querySelector('#textPost');
-  const uploadPictureBtn = containerPost.querySelector('#uploadPicture');
+  // const uploadPictureBtn = containerPost.querySelector('#uploadPicture');
   const publishBtn = containerPost.querySelector('#publish');
   // -----------DOM calls-------------------
 
@@ -33,15 +33,13 @@ export const renderPost = (navigateTo) => {
     navigateTo('/feed');
   });
 
-  uploadPictureBtn.addEventListener('click', () => {
-    console.log('click');
-  });
+  // uploadPictureBtn.addEventListener('click', () => {
+  // });
 
   publishBtn.addEventListener('click', () => {
     const textPostValue = textPost.value;
     createPost(textPostValue);
     navigateTo('/feed');
-    console.log('click');
   });
 
   return containerPost;

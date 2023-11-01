@@ -1,8 +1,9 @@
+/*eslint-disable*/
 import { signOutFunction } from '../lib/auth';
 import {
   paintRealTime, postReferenceLike, deletePostFunction, editPostFunction,
 } from '../lib/database';
-import LogoPeque from '../images/LogoPeque.png';
+// import { LogoPeque } from '../images/LogoPeque.png';
 
 function renderPostContainer(renderTextPost, renderDisplayName, postId, dataLikes) {
   const postContainer = document.createElement('section');
@@ -66,7 +67,6 @@ function renderPostContainer(renderTextPost, renderDisplayName, postId, dataLike
   const acceptEditButton = postContainer.querySelector('.edit-accept-button');
   const rejectEditButton = postContainer.querySelector('.edit-reject-button');
   const textEdit = postContainer.querySelector('.edit-input');
-  
 
   like.addEventListener('click', async () => {
     dataLikes = await postReferenceLike(postId, dataLikes);
@@ -101,7 +101,7 @@ export const renderFeed = (navigateTo) => {
   const currentUser = sessionStorage.getItem('usuarioLogeado');
   const feedPage = `
   <header>
-    <img  class="little-logo" />
+    <img  class="little-logo" alt='logo mochileiros'/>
     <h3>Mochileirxs</h3>
     <div class="user-info">
       <h4 class="user">${currentUser}</h4>

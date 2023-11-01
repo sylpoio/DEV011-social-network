@@ -3,7 +3,7 @@ import { initializeApp } from 'firebase/app';
 // import { getAnalytics } from 'firebase/analytics';
 import {
   getFirestore, addDoc, collection, getDocs, onSnapshot,
-  query, orderBy,doc, updateDoc, arrayUnion, arrayRemove, deleteDoc,
+  query, orderBy, doc, updateDoc, arrayUnion, arrayRemove, deleteDoc,
 } from 'firebase/firestore';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -27,5 +27,6 @@ const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 export const db = getFirestore(app);
 export {
-  addDoc, collection, getDocs, onSnapshot, query, orderBy, doc, updateDoc,arrayUnion, arrayRemove, deleteDoc,
+  addDoc, collection, getDocs, onSnapshot, query,
+  orderBy, doc, updateDoc, arrayUnion, arrayRemove, deleteDoc,
 };

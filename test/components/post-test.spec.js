@@ -22,4 +22,12 @@ describe('renderPost', () => {
     closeButton.click();
     expect(navigateToMock).toHaveBeenLastCalledWith('/feed');
   });
+  it('cuando se hace click en el botón de publicar nos lleva a la url de feed', () => {
+    const DOM = document.createElement('div');
+    const navigateToMock = jest.fn();
+    DOM.append(renderPost(navigateToMock));
+    const publishBtn = DOM.querySelector('#publish');
+    publishBtn.click();
+    expect(navigateToMock).toHaveBeenLastCalledWith('/feed');
+  });
 });
