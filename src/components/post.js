@@ -69,19 +69,19 @@ export const renderPost = (navigateTo) => {
     rejectPhotoButton.addEventListener('click', async () => {
       popupPhotoContainer.style.display = 'none';
     });
-  });  
+  });
   publishBtn.addEventListener('click', () => {
     const textPostValue = textPost.value;
-    if (textPostValue.trim() ===''|| photoUrlValue.trim() === '') {
+    if (textPostValue.trim() === '' || photoUrlValue.trim() === '') {
       popupAlertContainer.style.display = 'block';
       okButton.addEventListener('click', () => {
         popupAlertContainer.style.display = 'none';
-       });
+      });
     } else {
       createPost(textPostValue, photoUrlValue);
       navigateTo('/feed');
-    }    
-});
-  
-return containerPost;
-}
+    }
+  });
+
+  return containerPost;
+};

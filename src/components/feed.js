@@ -4,7 +4,7 @@ import {
 } from '../lib/database';
 import LogoPeque from '../images/LogoPeque.png';
 
-function renderPostContainer(renderTextPost, renderDisplayName, postId, dataLikes=[], renderPhoto) {
+function renderPostContainer(renderTextPost, renderDisplayName, postId, renderPhoto, dataLikes = []) {
   const postContainer = document.createElement('section');
   postContainer.classList.add('post-square');
   const postContainerPage = `
