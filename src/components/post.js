@@ -23,6 +23,14 @@ export const renderPost = (navigateTo) => {
           </div>
         </div>
       </div>
+      <div id='alert-pop-up' class='overlay' style='display:none;'>
+        <div id='alert-body-pop-up'>
+          <p class='alert-message'>Los campos no pueden estar vacíos</p>
+          <div class='ok-buttons'>
+            <button class='accept-alert-button'>Ok</button>
+          </div>
+        </div> 
+      </div>
       <button id="publish">Publicar</button>
     </section>
       `;
@@ -36,6 +44,8 @@ export const renderPost = (navigateTo) => {
   const addPhotoButton = containerPost.querySelector('.photo-accept-button');
   const rejectPhotoButton = containerPost.querySelector('.photo-reject-button');
   const photoUrl = containerPost.querySelector('.photo-input');
+  const okButton = containerPost.querySelector('.accept-alert-button');
+  const popupAlertContainer = containerPost.querySelector('#alert-pop-up');
   // -----------DOM calls-------------------
 
   textPost.addEventListener('keyup', () => {
@@ -63,10 +73,14 @@ export const renderPost = (navigateTo) => {
   publishBtn.addEventListener('click', () => {
     const textPostValue = textPost.value;
     if (textPostValue.trim() ===''|| photoUrlValue.trim() === '') {
-      alert ("dime que sirve")
-    }    
+      popupAlertContainer.style.display = 'block';
+      okButton.addEventListener('click', () => {
+        popupAlertContainer.style.display = 'none';
+       });
+    } else {
       createPost(textPostValue, photoUrlValue);
       navigateTo('/feed');
+    }    
 });
   
 return containerPost;

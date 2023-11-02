@@ -60,7 +60,8 @@ h1 {
 .edit-accept-button,
 .edit-reject-button,
 .photo-accept-button,
-.photo-reject-button{
+.photo-reject-button, 
+.accept-alert-button{
   width: 50%;
   height: 4%;
   flex-shrink: 0;
@@ -300,10 +301,14 @@ h5 {
   visibility: visible;
   opacity: 1;
 }
+#alert-pop-up {
+  text-align: center;
+}
 
 #body-pop-up,
 #body-edit-pop-up,
-#body-photo-pop-up {
+#body-photo-pop-up,
+#alert-body-pop-up{
   width:40%;
   padding:4%;
   border-radius: 30px;
@@ -315,12 +320,13 @@ h5 {
 
 .buttons, 
 .edit-buttons,
-.photo-buttons {
+.photo-buttons{
  display:flex;
  gap: 5px;
 }
 
-.confirm-message-delete {
+.confirm-message-delete,
+.alert-message {
   color: #d9d9d9;
   font-size: 1.3rem;
 }
