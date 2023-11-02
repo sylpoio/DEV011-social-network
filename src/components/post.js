@@ -11,12 +11,12 @@ export const renderPost = (navigateTo) => {
         <h5>${currentUser}</h5>
         <button id="close">✖</button>
       </div>
-      <label for="inputPost" ></label>
+      <label for="textPost" ></label>
       <textarea id= "textPost" placeholder="Comparte tu experiencia"></textarea>
       <button id="uploadPicture"></button>
       <div id='photo-pop-up' class='overlay' style='display:none;'>
         <div id='body-photo-pop-up'>
-          <textarea class='photo-input' placeholder="Agrega el URL de tu imagen"></textarea>
+          <textarea id='photo-input' class='photo-input' placeholder="Agrega el URL de tu imagen"></textarea>
           <div class='photo-buttons'>
             <button class='photo-accept-button'>Agregar</button>
             <button class='photo-reject-button'>Cancelar</button>
@@ -58,19 +58,16 @@ export const renderPost = (navigateTo) => {
     });
     rejectPhotoButton.addEventListener('click', async () => {
       popupPhotoContainer.style.display = 'none';
-  });
-
+    });
+  });  
   publishBtn.addEventListener('click', () => {
     const textPostValue = textPost.value;
-    if (textPostValue.trim() === "" || photoUrlValue.trim() === "" ) {
-      console.log();
-      alert('El campo de texto no puede estar vacío');
-    } else {
+    if (textPostValue.trim() ===''|| photoUrlValue.trim() === '') {
+      alert ("dime que sirve")
+    }    
       createPost(textPostValue, photoUrlValue);
       navigateTo('/feed');
-    }
-  });
-
 });
+  
 return containerPost;
 }
