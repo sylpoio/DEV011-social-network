@@ -58,7 +58,10 @@ h1 {
 .accept-button,
 .reject-button, 
 .edit-accept-button,
- .edit-reject-button{
+.edit-reject-button,
+.photo-accept-button,
+.photo-reject-button, 
+.accept-alert-button{
   width: 50%;
   height: 4%;
   flex-shrink: 0;
@@ -260,6 +263,7 @@ h4 {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  border-radius: 30px;
 }
 
 .interactions {
@@ -298,9 +302,14 @@ h5 {
   visibility: visible;
   opacity: 1;
 }
+#alert-pop-up {
+  text-align: center;
+}
 
 #body-pop-up,
-#body-edit-pop-up {
+#body-edit-pop-up,
+#body-photo-pop-up,
+#alert-body-pop-up{
   width:40%;
   padding:4%;
   border-radius: 30px;
@@ -311,12 +320,14 @@ h5 {
 }
 
 .buttons, 
-.edit-buttons {
+.edit-buttons,
+.photo-buttons{
  display:flex;
  gap: 5px;
 }
 
-.confirm-message-delete {
+.confirm-message-delete,
+.alert-message {
   color: #d9d9d9;
   font-size: 1.3rem;
 }
@@ -333,7 +344,8 @@ h5 {
 }
 
 .text-comment, 
-.edit-input {
+.edit-input, 
+.photo-input{
   width: 100%;
   height: 60%;
   border-radius: 5px;
@@ -428,12 +440,6 @@ h5 {
   text-align: center;
   font-size: 1rem;
   margin-top: 10px;
-}
-
-@media only screen and (min-width: 900px) {
-  .image {
-    width: 800px;
-  }
 }
 
 @media (min-width: 764px) {

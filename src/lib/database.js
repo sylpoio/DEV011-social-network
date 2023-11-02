@@ -4,13 +4,14 @@ import {
 } from './firebase.js';
 
 const postCollection = collection(db, 'posts');
-export const createPost = (post) => {
+export const createPost = (post, photoUrl) => {
   const currentUser = sessionStorage.getItem('usuarioLogeado');
   addDoc(postCollection, {
     post,
     date: Date.now(),
     displayName: currentUser,
     likes: [],
+    photoUrl,
   });
 };
 
