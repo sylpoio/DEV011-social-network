@@ -38,7 +38,7 @@
 
   ![captura-prot-alta](https://github.com/sylviagomez/DEV011-social-network/blob/main/Prototipos/Captura%20prot%20alta%20social%20network.png)
 
-    https://www.figma.com/proto/6O05yRYLbLTCLkAMMPmeMa/Untitled?type=design&node-id=3-4&t=XRcjyl6Rz3uy8ziM-0&scaling=scale-down&page-id=0%3A1&starting-point-node-id=3%3A6
+  [Enlace a prototipo](https://www.figma.com/proto/6O05yRYLbLTCLkAMMPmeMa/Untitled?type=design&node-id=3-4&t=XRcjyl6Rz3uy8ziM-0&scaling=scale-down&page-id=0%3A1&starting-point-node-id=3%3A6)
 
   ## 5. Deploy del proyecto
     
