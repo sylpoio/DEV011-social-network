@@ -4,7 +4,7 @@ import {
 } from '../lib/database';
 import LogoPeque from '../images/LogoPeque.png';
 
-function renderPostContainer(renderTextPost, renderDisplayName, postId, dataLikes) {
+function renderPostContainer(renderTextPost, renderDisplayName, postId, dataLikes=[], renderPhoto) {
   const postContainer = document.createElement('section');
   postContainer.classList.add('post-square');
   const postContainerPage = `
@@ -38,19 +38,14 @@ function renderPostContainer(renderTextPost, renderDisplayName, postId, dataLike
         <p class="render-text-post">${renderTextPost}</p>
       </div>
       <picture class = "image">
-        <img src="./images/imagen-muestra-post.png" alt="foto-post" class="foto-post" />
+        <img src=${renderPhoto} alt="foto-post" class="foto-post" />
       </picture>
       <div class = "interactions">
         <div class= "reactions">
           <button id="like">✈️</button>
           <span id="like-counter">${dataLikes.length}</span>
         </div>
-      </div>  
-        <div class="comment">
-        <h5 class="user-comment">Usuarix</h5>
-        <textarea class="text-comment" placeholder="deja tu comentario"></textarea>
-        <button id="comment">💬</button>
-      </div>
+      </div>          
   </div>
             `;
   postContainer.innerHTML = postContainerPage;
@@ -138,7 +133,8 @@ export const renderFeed = (navigateTo) => {
       const renderDisplayName = doc.data().displayName;
       const dataLikes = doc.data().likes;
       const postId = doc.id;
-      renderPostContainer(renderTextPost, renderDisplayName, postId, dataLikes);
+      const renderPhoto = doc.data().photoUrl;
+      renderPostContainer(renderTextPost, renderDisplayName, postId, dataLikes, renderPhoto);
     });
   });
   return containerFeed;

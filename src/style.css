@@ -58,7 +58,9 @@ h1 {
 .accept-button,
 .reject-button, 
 .edit-accept-button,
- .edit-reject-button{
+.edit-reject-button,
+.photo-accept-button,
+.photo-reject-button{
   width: 50%;
   height: 4%;
   flex-shrink: 0;
@@ -300,7 +302,8 @@ h5 {
 }
 
 #body-pop-up,
-#body-edit-pop-up {
+#body-edit-pop-up,
+#body-photo-pop-up {
   width:40%;
   padding:4%;
   border-radius: 30px;
@@ -311,7 +314,8 @@ h5 {
 }
 
 .buttons, 
-.edit-buttons {
+.edit-buttons,
+.photo-buttons {
  display:flex;
  gap: 5px;
 }
@@ -333,7 +337,8 @@ h5 {
 }
 
 .text-comment, 
-.edit-input {
+.edit-input, 
+.photo-input{
   width: 100%;
   height: 60%;
   border-radius: 5px;
