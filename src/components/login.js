@@ -74,6 +74,12 @@ export const renderLogin = (navigateTo) => {
   );
   container.appendChild(sectionContainer);
 
+  const footer = document.createElement('footer');
+  const footerText = document.createElement('p');
+  footerText.textContent = 'Danae Rodríguez, Penélope Logos y Sylvia Gómez ©2023';
+  footer.appendChild(footerText);
+  container.appendChild(footer);
+
   // ---------------------------------DOM calls-----------------------------------
   const buttonLogin = container.querySelector('#login');
   const btnLoginGoogle = container.querySelector('#login-google');
