@@ -53,7 +53,6 @@ export const renderPost = (navigateTo) => {
   });
 
   closeBtn.addEventListener('click', () => {
-    console.log('click');
     navigateTo('/feed');
   });
 

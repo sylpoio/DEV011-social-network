@@ -24,14 +24,12 @@ export const postReferenceLike = async (postId, dataLikes) => {
     await updateDoc(postData, {
       likes: arrayRemove(currentEmailUser),
     });
-    console.log('Este es después de quitar el like', dataLikes);
     return dataLikes;
   }
   // Atomically remove a region from the "regions" array field.
   await updateDoc(postData, {
     likes: arrayUnion(currentEmailUser),
   });
-  console.log('este es después de agregar el like', dataLikes);
   return dataLikes;
 };
 export const editPostFunction = async (postId, textEditValue, renderTextPost) => {
