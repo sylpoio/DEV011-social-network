@@ -115,7 +115,6 @@ export const stateChanged = auth.onAuthStateChanged((user) => {
   if (user) {
     const displayedName = user.displayName;
     const email = user.email;
-    console.log('por aquí usuario', displayedName);
     sessionStorage.setItem('usuarioLogeado', displayedName);
     sessionStorage.setItem('emailUsuarioLogeado', email);
   }
