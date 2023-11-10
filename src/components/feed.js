@@ -8,15 +8,17 @@ function renderPostContainer(
   renderTextPost,
   renderDisplayName,
   postId,
-  renderPhoto,
   dataLikes = [],
+  renderPhoto,
+  email,
 ) {
+  const currentEmailUser = sessionStorage.getItem('emailUsuarioLogeado');
   const postContainer = document.createElement('section');
   postContainer.classList.add('post-square');
   const postContainerPage = `
     <div class = "post"> 
       <div class = "header-post"> 
-        <h5>${renderDisplayName}</h5>
+        <h5 data-user-id="${email}">${renderDisplayName}</h5>
         <div>
           <button id="edit">🖋</button>
           <button id="delete">🗑</button>
@@ -67,31 +69,47 @@ function renderPostContainer(
   const acceptEditButton = postContainer.querySelector('.edit-accept-button');
   const rejectEditButton = postContainer.querySelector('.edit-reject-button');
   const textEdit = postContainer.querySelector('.edit-input');
+  const emailUser = postContainer.querySelector('[data-user-id]');
+  const emailUserValue = emailUser.dataset.userId;
+
+  function displayButtons() {
+    if (emailUserValue === currentEmailUser) {
+      editPostButton.style.display = 'inline-block';
+      deletePostButton.style.display = 'inline-block';
+      deletePostButton.addEventListener('click', () => {
+        popupContainer.style.display = 'block';
+        acceptButton.addEventListener('click', async () => {
+          await deletePostFunction(postId);
+        });
+        rejectButton.addEventListener('click', () => {
+          popupContainer.style.display = 'none';
+        });
+      });
+      editPostButton.addEventListener('click', () => {
+        popupEditContainer.style.display = 'block';
+        acceptEditButton.addEventListener('click', async () => {
+          const textEditValue = textEdit.value;
+          await editPostFunction(postId, textEditValue, renderTextPost);
+          popupEditContainer.style.display = 'none';
+        });
+        rejectEditButton.addEventListener('click', async () => {
+          popupEditContainer.style.display = 'none';
+        });
+      });
+    } else {
+      editPostButton.style.display = 'none';
+      deletePostButton.style.display = 'none';
+    }
+  }
 
   like.addEventListener('click', async () => {
     dataLikes = await postReferenceLike(postId, dataLikes);
     spanCounter.textContent = dataLikes.length;
   });
-  deletePostButton.addEventListener('click', () => {
-    popupContainer.style.display = 'block';
-    acceptButton.addEventListener('click', async () => {
-      await deletePostFunction(postId);
-    });
-    rejectButton.addEventListener('click', () => {
-      popupContainer.style.display = 'none';
-    });
-  });
-  editPostButton.addEventListener('click', () => {
-    popupEditContainer.style.display = 'block';
-    acceptEditButton.addEventListener('click', async () => {
-      const textEditValue = textEdit.value;
-      await editPostFunction(postId, textEditValue, renderTextPost);
-      popupEditContainer.style.display = 'none';
-    });
-    rejectEditButton.addEventListener('click', async () => {
-      popupEditContainer.style.display = 'none';
-    });
-  });
+
+  displayButtons(emailUser, currentEmailUser);
+  console.log('displayname', displayButtons(emailUserValue, currentEmailUser));
+  console.log(emailUserValue, currentEmailUser);
   return posts.appendChild(postContainer);
 }
 
@@ -140,7 +158,15 @@ export const renderFeed = (navigateTo) => {
       const dataLikes = doc.data().likes;
       const postId = doc.id;
       const renderPhoto = doc.data().photoUrl;
-      renderPostContainer(renderTextPost, renderDisplayName, postId, dataLikes, renderPhoto);
+      const email = doc.data().email;
+      renderPostContainer(
+        renderTextPost,
+        renderDisplayName,
+        postId,
+        dataLikes,
+        renderPhoto,
+        email,
+      );
     });
   });
   return containerFeed;
