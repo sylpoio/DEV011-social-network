@@ -11,10 +11,14 @@ export const renderCreateAccount = (navigateTo) => {
     <section class='section-entry'>
       <img src=${LogoPeque} alt='logo-mochileiros' class='logo'>
       <h2>Crear cuenta</h2>
-      <input type='text' placeholder='Usuario' class='inputs'>
-      <input type='email' placeholder='Correo electrónico' class='inputs'>
-      <input type='password' placeholder='Contraseña' class='inputs'>
-      <input type='password' placeholder='Confirma contraseña' class='inputs'>
+      <label for='text'></label>
+      <input id='text' type='text' placeholder='Usuario' class='inputs'>
+      <label for='email'></label>
+      <input id='email' type='email' placeholder='Correo electrónico' class='inputs' autocomplete ='on'>
+      <label for='password'></label>
+      <input id='password' type='password' placeholder='Contraseña' class='inputs'>
+      <label for='password-confirmation'></label>
+      <input id='password-confirmation' type='password' placeholder='Confirma contraseña' class='inputs'>
       <span class='error-message'style='display:none'></span>
       <button id='signin'>Crear</button>
       <div class='signin-google'>

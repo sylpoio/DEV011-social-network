@@ -33,7 +33,8 @@ function renderPostContainer(
           </div>
           <div id='edit-pop-up' class='overlay' style='display:none;'>
             <div id='body-edit-pop-up'>
-              <textarea class='edit-input'>${renderTextPost}</textarea>
+            <label for='${postId}'></label>
+              <textarea id='${postId}' class='edit-input'>${renderTextPost}</textarea>
               <div class='edit-buttons'>
                 <button class='edit-accept-button'>Publicar</button>
                 <button class='edit-reject-button'>Cancelar</button>
@@ -118,7 +119,7 @@ export const renderFeed = (navigateTo) => {
   const feedPage = `
   <header>
     <img src=${LogoPeque} class="little-logo" />
-    <h3>Mochileirxs</h3>
+    <h3>Mochileiros</h3>
     <div class="user-info">
       <h4 class="user">${currentUser}</h4>
       <button id="signout">Salir</button>

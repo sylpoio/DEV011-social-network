@@ -20,7 +20,7 @@ export const renderLogin = (navigateTo) => {
   h1.textContent = 'Mochileiros';
 
   const labelUsername = document.createElement('label');
-  labelUsername.setAttribute('for', 'user');
+  labelUsername.setAttribute('for', 'inputUsername');
 
   const inputUsername = document.createElement('input');
   inputUsername.setAttribute('type', 'email');
@@ -29,7 +29,7 @@ export const renderLogin = (navigateTo) => {
   inputUsername.setAttribute('id', 'inputUsername');
 
   const labelPassword = document.createElement('label');
-  labelPassword.setAttribute('for', 'password');
+  labelPassword.setAttribute('for', 'inputPassword');
 
   const inputPassword = document.createElement('input');
   inputPassword.setAttribute('type', 'password');
@@ -53,7 +53,7 @@ export const renderLogin = (navigateTo) => {
   divGoogle.setAttribute('class', 'signin-google');
 
   const googleLabel = document.createElement('label');
-  googleLabel.setAttribute('for', 'signin-google');
+  googleLabel.setAttribute('for', 'login-google');
   googleLabel.textContent = 'Continuar con:';
 
   const btnGoogle = document.createElement('button');
