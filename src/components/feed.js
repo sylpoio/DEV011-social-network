@@ -108,8 +108,6 @@ function renderPostContainer(
   });
 
   displayButtons(emailUser, currentEmailUser);
-  console.log('displayname', displayButtons(emailUserValue, currentEmailUser));
-  console.log(emailUserValue, currentEmailUser);
   return posts.appendChild(postContainer);
 }
 
