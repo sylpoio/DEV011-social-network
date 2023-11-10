@@ -6,12 +6,14 @@ import {
 const postCollection = collection(db, 'posts');
 export const createPost = (post, photoUrl) => {
   const currentUser = sessionStorage.getItem('usuarioLogeado');
+  const currentEmailUser = sessionStorage.getItem('emailUsuarioLogeado');
   addDoc(postCollection, {
     post,
     date: Date.now(),
     displayName: currentUser,
     likes: [],
     photoUrl,
+    email: currentEmailUser,
   });
 };
 
